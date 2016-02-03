@@ -19,6 +19,10 @@ app.use('/api/instagram',
   require('./server/controllers/instagram'));
 app.use('/api/weather',
   require('./server/controllers/weather'));
+app.use('/api/alchemy',
+  require('./server/controllers/alchemy'));
+app.use('/api/times',
+  require('./server/controllers/times'));
 
 app.get('/*', function(req, res){
   res.sendFile(path.join(__dirname, 'client/index.html'));
