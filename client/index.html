@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="MezzoApp">
   <head>
+    <base href="/">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>Mezzo</title>
-    <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <link rel="stylesheet" href="app/styles/style.css">
+    <link rel="stylesheet" href="app/assets/styles/style.css">
 
 <!-- angular scripts -->
-    <script src="/node_modules/angular/angular.js"></script>
-    <script src="/node_modules/angular-material/angular-material.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-route.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-resource.js"></script>
 
 <!-- client scripts -->
     <script src="app/app.js"></script>
-    <script src="app/controller.js"></script>
+    <script src="app/controllers.js"></script>
     <script src="app/services.js"></script>
   </head>
   <body>
-    <h1>Test</h1>
+    <ng-view></ng-view>
   </body>
 </html>
