@@ -1,4 +1,4 @@
-var app = angular.module('MezzoApp', ['ngRoute', 'MezzoCtrls', 'MezzoServices']);
+var app = angular.module('MezzoApp', ['ngRoute', 'ngMaterial', 'MezzoCtrls', 'MezzoServices']);
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
 

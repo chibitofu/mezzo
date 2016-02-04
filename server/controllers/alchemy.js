@@ -3,7 +3,7 @@ var express = require('express'),
     router  = express.Router();
 
 router.post('/', function(req, res){
-  var keyword = req.body.keyword;
+  var keyword = req.body.city;
 
   helper.articles(keyword, function(articles){
     res.send(articles);

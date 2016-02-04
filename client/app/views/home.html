@@ -1,1 +1,37 @@
-<h1>Home</h1>
+<div ng-controller="HomeCtrl" layout="column" ng-cloak class="md-inline-form">
+  <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+    <div>
+      <md-input-container>
+        <label>City</label>
+        <input ng-model="travelForm.city" required>
+        <div ng-messages="travelForm.city.$error">
+          <div ng-message="required">This field is required</div>
+        </div>
+      </md-input-container>
+    </div>
+    <div>
+      <md-input-container>
+        <label>Country</label>
+        <md-select ng-model="travelForm.country" required>
+          <md-option ng-repeat="place in country" value="{{place.alpha}}">
+            {{place.name}}
+          </md-option>
+        </md-select>
+        <div ng-messages="travelForm.country.$error"  ng-if="travel.Form.country.$dirty">
+          <div ng-message="required">This field is required</div>
+        </div>
+      </md-input-container>
+    </div>
+    <form name="travelForm">
+      <div layout-gt-xs="row">
+        <md-datepicker ng-model="travelForm.startDate" md-placeholder="Start Date" md-min-date="minDate" required>
+        </md-datepicker>
+      </div>
+      <div layout-gt-xs="row">
+        <md-datepicker ng-model="travelForm.endDate" md-placeholder="End Date" md-min-date="minDate" required>
+        </md-datepicker>
+      </div>
+      <md-button class="md-raised md-primary" ng-click="makeMagazine(travelForm.city, travelForm.country, travelForm.startDate, travelForm.endDate)">Create</md-button>
+    </form>
+  </md-content>
+</div>
