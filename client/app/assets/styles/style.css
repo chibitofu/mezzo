@@ -1,2 +1,12 @@
+/* Global Styles */
+
+
+/* Navbar Styles */
+.navButt {
+  text-align: left;
+}
+
+/* Homepage Styles */
 .inputdemoBasicUsage .md-datepicker-button {
-  width: 36px; }
+  width: 36px;
+}

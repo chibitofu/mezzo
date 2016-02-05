@@ -3,13 +3,20 @@ var express = require('express'),
     router  = express.Router();
 
 router.post('/', function(req, res){
-  var location = req.body.location;
-  var startDate = req.body.start;
-  var endDate = req.body.end;
+  var location = req.body.city;
+  var startDate = req.body.startDate;
+  var endDate = req.body.endDate;
 
   helper.thingsToDo(location, startDate, endDate, function(thingsToDo){
     res.send(thingsToDo);
-    console.log(thingsToDo);
+  });
+});
+
+router.post('/detail', function(req, res){
+  var id = req.body.id;
+
+  helper.thingsToDoDetail(id, function(thingsToDoDetail){
+    res.send(thingsToDoDetail);
   });
 });
 

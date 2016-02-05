@@ -1,1 +1,46 @@
-<h1>Magazine</h1>
+<div ng-controller="MagazineCtrl" ng-cloak>
+  <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
+    <md-card class="card-page-title">
+      <md-card-title>
+        <span class="md-headline">Things To Do in {{weather.city.name}}</span>
+      </md-card-title>
+      <md-card-content class="card-body">
+        <div layout="row" layout-xs="column">
+          <div flex ng-repeat="day in weather.list">
+            {{day.weather[0].description}}
+            {{day.temp.max | number : 0}}&#8451;
+            {{day.temp.min | number : 0}}&#8451;
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
+  </md-content>
+  <md-content class="md-padding" layout-xs="column" layout="row" layout-wrap layout-xs-align="center center">
+    <md-card ng-repeat="item in expedia" style="width: 350px; height: 500px;">
+      <md-card-header>
+        <md-card-header-text class="card-title">
+          <span class="md-title">{{item.title}}</span>
+          <span class="md-subhead">{{item.categories[0]}}</span>
+        </md-card-header-text>
+      </md-card-header>
+      <md-card-title-media>
+        <img ng-src="http:{{item.imageUrl}}" class="md-media-lg card-media">
+      </md-card-title-media>
+      <md-card-title class="card-body">
+        <md-card-title-text>
+          <span class="md-headline">Price {{item.fromPrice}}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content class="card-body">
+        <p>Rating {{item.recommendationScore}}</p>
+      </md-card-content>
+      <md-card-footer>
+        <div>
+          <md-button ng-click="showDialog($event, item.id)" class="md-raised">
+            Details
+          </md-button>
+        </div>
+      </md-card-footer>
+    </md-card>
+  </md-content>
+</div>

@@ -1,4 +1,17 @@
-var app = angular.module('MezzoApp', ['ngRoute', 'ngMaterial', 'MezzoCtrls', 'MezzoServices']);
+var app = angular.module('MezzoApp', ['ngRoute', 'ngMaterial', 'MezzoCtrls', 'MezzoServices'])
+.config(function($mdThemingProvider, $mdIconProvider){
+  $mdThemingProvider.theme('default')
+    .dark()
+    .primaryPalette('green')
+    .accentPalette('red');
+}).
+filter('htmlToPlaintext', function() {
+    return function(text) {
+      return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
+    };
+  }
+);
+
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
 

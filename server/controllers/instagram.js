@@ -3,7 +3,7 @@ var express = require('express'),
     router  = express.Router();
 
 router.post('/', function(req, res){
-  var tag = req.body.tag;
+  var tag = req.body.city;
 
   helper.tags(tag, function(tag){
     res.send(tag);

@@ -5,6 +5,9 @@ angular.module('MezzoServices', ['ngResource'])
 .factory('Expedia', ['$resource', function($resource){
   return $resource('http://localhost:3000/api/expedia');
 }])
+.factory('ExpediaDetail', ['$resource', function($resource){
+  return $resource('http://localhost:3000/api/expedia/detail');
+}])
 .factory('Instagram', ['$resource', function($resource){
   return $resource('http://localhost:3000/api/instagram');
 }])

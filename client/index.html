@@ -10,10 +10,6 @@
 <!-- client css -->
     <link rel="stylesheet" href="app/assets/styles/style.css">
 
-  </head>
-  <body>
-    <ng-view></ng-view>
-
 <!-- angular scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-route.js"></script>
@@ -28,5 +24,12 @@
     <script src="app/app.js"></script>
     <script src="app/controllers.js"></script>
     <script src="app/services.js"></script>
+  </head>
+  <body>
+<!-- Navbar, ng-include needs quotes in quotes -->
+    <div ng-include="'app/views/partials/navbar.html'"></div>
+
+<!-- body view -->
+    <ng-view></ng-view>
   </body>
 </html>

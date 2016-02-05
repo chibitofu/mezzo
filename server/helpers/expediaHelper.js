@@ -16,7 +16,18 @@ module.exports = {
       var thingsToDo = JSON.parse(res.body).activities;
       callback({thingsToDo: thingsToDo})
     });
-  }
+  },
+  thingsToDoDetail: function(id, callback){
+    var expediaAPI = "http://terminal2.expedia.com:80/x/activities/details?"
+    var id = "activityId=" + id;
+    var apiKey = "&apikey=" + process.env.EXPEDIA_CONSUMER_KEY;
 
+    var findToDoDetail = expediaAPI + id + apiKey;
+
+    request(findToDoDetail, function(req, res){
+      var thingsToDoDetail = JSON.parse(res.body);
+      callback({thingsToDoDetail: thingsToDoDetail})
+    });
+  }
 
 };
