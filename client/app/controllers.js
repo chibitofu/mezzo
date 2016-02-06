@@ -128,7 +128,7 @@ var callApis = function(){
                $scope.weather = data.weather;
              });
          }).then(function(){
-           $location.path('/magazine');
+           $location.path('/table-of-contents');
          });
        });
      });
@@ -138,9 +138,15 @@ var callApis = function(){
 }])
 .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('docs-dark', 'default')
-      .primaryPalette('green')
+      .primaryPalette('cyan')
+      .accentPalette('amber')
       .dark();
 })
+.controller('TableCtrl', ['$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
+
+
+
+}])
 .controller('TodoCtrl', ['$scope', '$http', '$location', '$routeParams', 'travelInfoService', 'Expedia', 'Weather', 'ExpediaDetail', '$mdDialog', 'todoService', 'weatherService', function($scope, $http, $location, $routeParams, travelInfoService, Expedia, Weather, ExpediaDetail, $mdDialog, todoService, weatherService){
 
   // $scope.expedia = todoService.getTodoInfo();

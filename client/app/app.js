@@ -1,4 +1,4 @@
-var app = angular.module('MezzoApp', ['ngRoute', 'ngMaterial', 'MezzoCtrls', 'MezzoServices'])
+var app = angular.module('MezzoApp', ['ngRoute', 'ngMaterial', 'MezzoCtrls', 'MezzoServices', 'ngMdIcons'])
 .config(function($mdThemingProvider, $mdIconProvider){
   $mdThemingProvider.theme('default')
     .dark()
@@ -38,7 +38,6 @@ var app = angular.module('MezzoApp', ['ngRoute', 'ngMaterial', 'MezzoCtrls', 'Me
   }
 });
 
-
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
 
   $routeProvider
@@ -46,7 +45,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     templateUrl: 'app/views/home.html',
     controller: 'HomeCtrl'
   })
-  .when('/magazine', {
+  .when('/table-of-contents', {
+    templateUrl: 'app/views/table-of-contents.html',
+    controller: 'TableCtrl'
+  })
+  .when('/todo', {
     templateUrl: 'app/views/todo.html',
     controller: 'TodoCtrl'
   })
