@@ -2,7 +2,7 @@ var app = angular.module('MezzoApp', ['ngRoute', 'ngMaterial', 'MezzoCtrls', 'Me
 .config(function($mdThemingProvider, $mdIconProvider){
   $mdThemingProvider.theme('default')
     .dark()
-    .primaryPalette('green')
+    .primaryPalette('blue-grey')
     .accentPalette('red');
 }).
 filter('htmlToPlaintext', function() {

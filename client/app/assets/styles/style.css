@@ -1,5 +1,7 @@
 /* Global Styles */
-
+md-card-footer {
+  font-size: 9px;
+}
 
 /* Navbar Styles */
 .navButt {
@@ -9,4 +11,45 @@
 /* Homepage Styles */
 .inputdemoBasicUsage .md-datepicker-button {
   width: 36px;
+}
+
+/* Weather */
+.weather-tile {
+  background-color: rgb(255, 255, 255);
+  color: rgb(75, 75, 75);
+  text-align: center;
+  margin: 0 5px;
+  padding: 5px;
+}
+
+.weather-tile img {
+  margin: 0 auto;
+}
+
+.todo-headline {
+  font-size: 48px;
+}
+
+/* Top Bar */
+.top-banner {
+  background-color: rgb(255, 255, 255);
+  color: rgb(149, 16, 16);
+}
+
+/* Todo Cards */
+.todo-content {
+  width: 350px;
+  height: 500px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(75, 75, 75);
+}
+
+.todo-title {
+  background: rgb(149, 16, 16);
+  color: rgb(255, 255, 255);
+}
+
+.todo-detail-content {
+  background-color: rgb(255, 255, 255);
+  color: rgb(75, 75, 75);
 }

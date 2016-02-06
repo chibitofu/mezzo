@@ -1,7 +1,7 @@
-<md-dialog ng-controller="MagazineCtrl">
+<md-dialog ng-controller="MagazineCtrl" flex="50">
   <md-dialog-content>
-    <md-card ng-model="expediaDetail">
-      <md-card-header>
+    <md-card ng-model="expediaDetail" class="todo-detail-content">
+      <md-card-header class="todo-title">
         <md-card-header-text class="card-title">
           <span class="md-headline">{{expediaDetail.title}}</span>
           <span class="md-subhead">{{expediaDetail.location}}</span>
@@ -18,13 +18,13 @@
         <img ng-src="http:{{expediaDetail.staticMapUrl}}" class="md-media-lg card-media">
       </md-card-title-media>
       <md-card-footer>
-        <a ng-href="http:{{expediaDetail.url}}">Book Now</a>
+        <small class="xs-subhead">{{expediaDetail.knowBeforeYouBook | htmlToPlaintext}}</small>
       </md-card-footer>
     </md-card>
   </md-dialog-content>
       <md-dialog-actions>
         <md-button ng-click="closeDialog()" class="md-primary">
-          Close Dialog
+          Close
         </md-button>
       </md-dialog-actions>
 </md-dialog>

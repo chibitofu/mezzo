@@ -89,38 +89,73 @@ angular.module('MezzoCtrls', ['ngMaterial', 'ngRoute', 'MezzoServices'])
   //   console.log($scope.alchemy);
   // })
 
-  Expedia.save(travelInfo).$promise.then(function(data){
-   $scope.expedia = data.thingsToDo;
-   console.log($scope.expedia);
+//Alchemy testing object//
+  $http.get('app/assets/files/test_files/alchemy_test.json')
+  .success(function(data){
+    $scope.alchemy = data.articles.result.docs;
+    console.log($scope.alchemy);
+  });
+
+// Expedia.save(travelInfo).$promise.then(function(data){
+  //  $scope.expedia = data.thingsToDo;
+  //  console.log($scope.expedia);
+  // });
+
+//Todo testing object//
+  $http.get('app/assets/files/test_files/todo_test.json')
+  .success(function(data){
+    $scope.expedia = data.thingsToDo;
+    console.log($scope.expedia);
   });
 
   // Instagram.save(travelInfo).$promise.then(function(data){
   //  $scope.instagram = data.tags;
   //  console.log($scope.instagram);
   // })
-  //
+
+//Tags testing object//
+  $http.get('app/assets/files/test_files/tags_test.json')
+  .success(function(data){
+    $scope.instagram = data.tags;
+    console.log($scope.instagram);
+  });
+
   // Weather.save(travelInfo).$promise.then(function(data){
   //  $scope.weather = data.weather;
   //  console.log($scope.weather);
   // })
 
+//Weather testing object//
+  $http.get('app/assets/files/test_files/weather_test.json')
+  .success(function(data){
+    $scope.weather = data.weather;
+    console.log($scope.weather);
+  });
+
   $scope.showDialog = showDialog;
 
-  function showDialog($event, id) {
+function showDialog($event, id) {
+var thisEvent = $event;
+//     ExpediaDetail.save({'id' : id}).$promise.then(function(data){
+//      $scope.expediaDetail = data.thingsToDoDetail;
+// console.log($scope.expediaDetail);
 
-    ExpediaDetail.save({'id' : id}).$promise.then(function(data){
-     $scope.expediaDetail = data.thingsToDoDetail;
-console.log($scope.expediaDetail);
+//Todo detail test object//
+$http.get('app/assets/files/test_files/todo_detail_test.json')
+.success(function(data){
+  $scope.expediaDetail = data.thingsToDoDetail;
+  console.log($scope.expediaDetail);
+
     var parentEl = angular.element(document.body);
 
     $mdDialog.show({
       parent: parentEl,
       scope: $scope,
-      targetEvent: $event,
+      targetEvent: event,
       templateUrl: "../app/views/partials/todoDialog.html",
-      controller: DialogController
+      controller: DialogController,
      });
-     console.log($scope.expediaDetail);
+
      function DialogController($scope, $mdDialog) {
        $scope.closeDialog = function() {
          $mdDialog.hide();
