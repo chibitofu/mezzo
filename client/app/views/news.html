@@ -2,15 +2,22 @@
   <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
     <md-card class="card-page-title top-banner">
       <md-card-title class="todo-headline">
-        <span class="md-headline todo-headline">News</span>
+        <span class="md-headline todo-headline">News about {{weather.city.name}}</span>
       </md-card-title>
       <md-card-content class="">
-        <div class="md-subhead todo-subheadline" layout="row" layout-xs="column">Read what's going on in {{travelInfo}}</div>
+        <div class="md-subhead todo-subheadline">Current Weather 7 day forecast</div>
+        <div layout="row" layout-xs="column" class="md-padding">
+          <div flex ng-repeat="day in weather.list" style="width: 115px;" class="weather-tile">
+            <img ng-src="http://openweathermap.org/img/w/{{day.weather[0].icon}}.png"><br>
+            <span>High {{day.temp.max | number : 0}}<small>&#8451;</small></span><br>
+            <span>Low {{day.temp.min | number : 0}}<small>&#8451;</small></span>
+          </div>
+        </div>
       </md-card-content>
     </md-card>
   </md-content>
-  <md-content class="md-padding" layout-xs="column" layout-gt-sm="row" layout-wrap layout-align="center" flex>
-    <md-card ng-repeat="item in alchemy" class="news-content" flex-gt-sm="30" flex-xs="33">
+  <md-content class="md-padding" layout-xs="column" layout-gt-xs="row" layout-wrap layout-align="center" flex>
+    <md-card ng-repeat="item in alchemy" class="news-content" flex-gt-xs="30" flex-xs="50">
       <md-card-header class="todo-title">
         <md-card-header-text>
           <span class="md-title">{{item.source.enriched.url.title}}</span>

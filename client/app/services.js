@@ -14,7 +14,7 @@ angular.module('MezzoServices', ['ngResource'])
 .factory('Weather', ['$resource', function($resource){
   return $resource('http://localhost:3000/api/weather');
 }])
-.service('travelInfoService', function(){
+.factory('travelInfoService', function(){
   var travelInfo = {};
 
   var addTravelInfo = function(info){
@@ -31,7 +31,7 @@ angular.module('MezzoServices', ['ngResource'])
   };
 
 })
-.service('todoService', function(){
+.factory('todoService', function(){
   var todoInfo = {};
 
   var addTodoInfo = function(info){
@@ -47,7 +47,7 @@ angular.module('MezzoServices', ['ngResource'])
     getTodoInfo: getTodoInfo
   };
 })
-.service('newsService', function(){
+.factory('newsService', function(){
   var newsInfo = {};
 
   var addNewsInfo = function(info){
@@ -63,7 +63,7 @@ angular.module('MezzoServices', ['ngResource'])
     getNewsInfo: getNewsInfo
   };
 })
-.service('weatherService', function(){
+.factory('weatherService', function(){
   var weatherInfo = {};
 
   var addWeatherInfo = function(info){
@@ -79,7 +79,7 @@ angular.module('MezzoServices', ['ngResource'])
     getWeatherInfo: getWeatherInfo
   };
 })
-.service('tagsService', function(){
+.factory('tagsService', function(){
   var tagsInfo = {};
 
   var addTagsInfo = function(info){
