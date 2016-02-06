@@ -1,0 +1,28 @@
+<md-dialog ng-controller="NewsCtrl">
+  <md-content class="md-padding" layout-align="center" ng-model="alchemyDialog">
+    <md-card class="news-content">
+      <md-card-header class="todo-title">
+        <md-card-header-text>
+          <span class="md-title">{{alchemyDialog.source.enriched.url.title}}</span>
+          <span class="md-subhead">News</span>
+        </md-card-header-text>
+      </md-card-header>
+      <md-card-title-media>
+        <img ng-src="{{alchemyDialog.source.enriched.url.image}}" class="md-media-sm card-media news-image">
+      </md-card-title-media>
+      <md-card-title class="card-body">
+        <md-card-content class="news-body">
+          <span class="xs-subhead">{{alchemyDialog.source.enriched.url.text}}</span>
+        </md-card-content>
+      </md-card-title>
+      <md-card-footer>
+        <md-button class="md-raised md-accent" ng-href="{{alchemyDialog.source.enriched.url.url}}" target="_blank">Full Story</md-button>
+        <div>
+          <md-button ng-click="closeDialog()" class="md-raised md-primary md-hue-1">
+            Close
+          </md-button>
+        </div>
+      </md-card-footer>
+    </md-card>
+  </md-content>
+</md-dialog>

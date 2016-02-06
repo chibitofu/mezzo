@@ -1,10 +1,11 @@
 <div ng-controller="MagazineCtrl" ng-cloak>
   <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
     <md-card class="card-page-title top-banner">
-      <md-card-title class="">
+      <md-card-title class="todo-headline">
         <span class="md-headline todo-headline">Things To Do in {{weather.city.name}}</span>
       </md-card-title>
       <md-card-content class="">
+        <div class="md-subhead todo-subheadline">Current Weather 7 day forecast</div>
         <div layout="row" layout-xs="column" class="md-padding">
           <div flex ng-repeat="day in weather.list" style="width: 115px;" class="weather-tile">
             <img ng-src="http://openweathermap.org/img/w/{{day.weather[0].icon}}.png"><br>
@@ -32,11 +33,11 @@
         </md-card-title-text>
       </md-card-title>
       <md-card-content class="card-body">
-        <p>Rating {{item.recommendationScore}}</p>
+        <p>Rating: {{item.recommendationScore | isNA}}</p>
       </md-card-content>
       <md-card-footer>
         <div>
-          <md-button ng-click="showDialog($event, item.id)" class="md-raised md-primary">
+          <md-button ng-click="showDialog($event, item.id)" class="md-raised md-primary md-hue-2">
             Details
           </md-button>
         </div>

@@ -83,19 +83,6 @@ angular.module('MezzoCtrls', ['ngMaterial', 'ngRoute', 'MezzoServices'])
 .controller('MagazineCtrl', ['$scope', '$http', '$location', '$routeParams', 'travelInfoService', 'Alchemy', 'Expedia', 'Instagram', 'Weather', 'ExpediaDetail', '$mdDialog', function($scope, $http, $location, $routeParams, travelInfoService, Alchemy, Expedia, Instagram, Weather, ExpediaDetail, $mdDialog){
 
   var travelInfo = travelInfoService.getTravelInfo();
-
-  // Alchemy.save(travelInfo).$promise.then(function(data){
-  //   $scope.alchemy = data.articles;
-  //   console.log($scope.alchemy);
-  // })
-
-//Alchemy testing object//
-  $http.get('app/assets/files/test_files/alchemy_test.json')
-  .success(function(data){
-    $scope.alchemy = data.articles.result.docs;
-    console.log($scope.alchemy);
-  });
-
 // Expedia.save(travelInfo).$promise.then(function(data){
   //  $scope.expedia = data.thingsToDo;
   //  console.log($scope.expedia);
@@ -132,7 +119,7 @@ angular.module('MezzoCtrls', ['ngMaterial', 'ngRoute', 'MezzoServices'])
     console.log($scope.weather);
   });
 
-  $scope.showDialog = showDialog;
+$scope.showDialog = showDialog;
 
 function showDialog($event, id) {
 var thisEvent = $event;
@@ -162,8 +149,43 @@ $http.get('app/assets/files/test_files/todo_detail_test.json')
        }
      }
     });
-
-
   }
 
+}])
+.controller('NewsCtrl', ['$scope', '$http', '$location', '$routeParams', 'Alchemy', 'travelInfoService', '$mdDialog', function($scope, $http, $location, $routeParams, Alchemy, travelInfoService, $mdDialog){
+
+  $scope.travelInfo = travelInfoService.getTravelInfo();
+  // Alchemy.save(travelInfo).$promise.then(function(data){
+  //   $scope.alchemy = data.articles;
+  //   console.log($scope.alchemy);
+  // })
+
+// Alchemy testing object//
+  $http.get('app/assets/files/test_files/alchemy_test.json')
+  .success(function(data){
+    $scope.alchemy = data.articles.result.docs;
+  });
+
+  $scope.showDialog = showDialog;
+
+  function showDialog($event, $index) {
+    var parentEl = angular.element(document.body);
+
+    $mdDialog.show({
+      parent: parentEl,
+      scope: $scope,
+      targetEvent: $scope,
+      templateUrl: "../app/views/partials/newsDialog.html",
+      locals: {
+             items: $scope.alchemy[$index]
+           },
+      controller: DialogController,
+     });
+     function DialogController($scope, $mdDialog, items){
+       $scope.alchemyDialog = items
+       $scope.closeDialog = function() {
+         $mdDialog.hide();
+       }
+     }
+   }
 }]);
