@@ -47,8 +47,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     controller: 'HomeCtrl'
   })
   .when('/magazine', {
-    templateUrl: 'app/views/magazine.html',
-    controller: 'MagazineCtrl'
+    templateUrl: 'app/views/todo.html',
+    controller: 'TodoCtrl'
   })
   .when('/news', {
     templateUrl: 'app/views/news.html',
