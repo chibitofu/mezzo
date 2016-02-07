@@ -4,10 +4,7 @@ angular.module('MezzoCtrls', ['ngMaterial', 'ngRoute', 'MezzoServices'])
   $scope.isOpenRight = function(){
     return $mdSidenav('right').isOpen();
   };
-  /**
-   * Build handler to open/close a SideNav; when animation finishes
-   * report completion in console
-   */
+
   function buildDelayedToggler(navID) {
     return debounce(function() {
       $mdSidenav(navID)
@@ -26,7 +23,7 @@ angular.module('MezzoCtrls', ['ngMaterial', 'ngRoute', 'MezzoServices'])
     $mdSidenav('right').close();
   };
 }])
-.controller('HomeCtrl', ['$scope', '$http', '$location', '$routeParams', 'travelInfoService', 'Expedia', 'todoService', 'Alchemy', 'newsService', 'Weather', 'weatherService', 'Instagram', 'tagsService', '$interval', function($scope, $http, $location, $routeParams, travelInfoService, Expedia, todoService, Alchemy, newsService, Weather, weatherService, Instagram, tagsService, $interval){
+.controller('HomeCtrl', ['$scope', '$http', '$location', '$routeParams', 'travelInfoService', 'Expedia', 'todoService', 'Alchemy', 'newsService', 'Weather', 'weatherService', 'Instagram', 'tagsService', '$interval', 'Geocode', 'geocodeService', 'Restaurant', 'restaurantService', function($scope, $http, $location, $routeParams, travelInfoService, Expedia, todoService, Alchemy, newsService, Weather, weatherService, Instagram, tagsService, $interval, Geocode, geocodeService, Restaurant, restaurantService){
 
   $scope.travelForm = {
     city: '',
@@ -59,7 +56,24 @@ angular.module('MezzoCtrls', ['ngMaterial', 'ngRoute', 'MezzoServices'])
     };
 
 //Service call to pass travelInfo to other controllers//
-    travelInfoService.addTravelInfo($scope.travelInfo)
+    travelInfoService.addTravelInfo($scope.travelInfo);
+
+    Geocode.save($scope.travelInfo).$promise.then(function(geocode){
+      var geometry = geocode.geoLocation.results[0].geometry.location;
+      $scope.geocodeInfo = {
+        "lat" : geometry.lat,
+        "lng" : geometry.lng
+      };
+
+      geocodeService.addGeocodeInfo($scope.geocodeInfo);
+      console.log($scope.geocodeInfo);
+    }), function(error) {
+      $http.get('app/assets/files/test_files/weather_test.json')
+      .success(function(data){
+        $scope.geocodeInfo = data.geoLocation.results[0].geometry.location;
+      });
+    };
+
     callApis();
   }
 
@@ -119,8 +133,21 @@ var callApis = function(){
                $scope.weather = data.weather;
              });
          }).then(function(){
-           $location.path('/table-of-contents');
-         });
+          //  $location.path('/table-of-contents');
+         }).then(function(){
+           var geometry = geocodeService.getGeocodeInfo();
+           Restaurant.save(geometry).$promise.then(function(restaurants){
+             $scope.restuarants = restaurants;
+             restaurantService.addRestaurantInfo($scope.restuarants);
+             console.log($scope.restuarants);
+            //  console.log($scope.restuarants);
+           }), function(error) {
+             $http.get('app/assets/files/test_files/restuarants_test.json')
+             .success(function(data){
+               $scope.restuarants = data;
+             });
+           }
+         })
        });
      });
    });
@@ -355,5 +382,7 @@ var callApis = function(){
     $scope.wiki = $sce.trustAsHtml($scope.wiki);
   });
 
+}])
+.controller('RestaurantCtrl', ['$scope', '$http', '$location', '$routeParams', '$mdDialog', 'Restaurant', 'restaurantService', 'travelInfoService', 'weatherService', function($scope, $http, $location, $routeParams, $mdDialog, Restaurant, restaurantService, travelInfoService, weatherService){
 
 }]);

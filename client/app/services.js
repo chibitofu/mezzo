@@ -17,6 +17,12 @@ angular.module('MezzoServices', ['ngResource'])
 .factory('Wiki', ['$resource', function($resource){
   return $resource('http://localhost:3000/api/weather');
 }])
+.factory('Restaurant', ['$resource', function($resource){
+  return $resource('http://localhost:3000/api/places/restaurants');
+}])
+.factory('Geocode', ['$resource', function($resource){
+  return $resource('http://localhost:3000/api/places/geocode');
+}])
 .factory('travelInfoService', function(){
   var travelInfo = {};
 
@@ -118,3 +124,35 @@ angular.module('MezzoServices', ['ngResource'])
     getWikiInfo: getWikiInfo
   };
 })
+.factory('restaurantService', function(){
+  var restaurantInfo = {};
+
+  var addRestaurantInfo = function(info){
+    restaurantInfo = info;
+  }
+
+  var getRestaurantInfo = function(){
+    return restaurantInfo;
+  }
+
+  return {
+    addRestaurantInfo: addRestaurantInfo,
+    getRestaurantInfo: getRestaurantInfo
+  };
+})
+.factory('geocodeService', function(){
+  var geocodeInfo = {};
+
+  var addGeocodeInfo = function(info){
+    geocodeInfo = info;
+  }
+
+  var getGeocodeInfo = function(){
+    return geocodeInfo;
+  }
+
+  return {
+    addGeocodeInfo: addGeocodeInfo,
+    getGeocodeInfo: getGeocodeInfo
+  };
+});
