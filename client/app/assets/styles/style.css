@@ -7,6 +7,15 @@ md-card-footer {
   font-size: 9px;
 }
 
+footer {
+  font-size: 9px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
+  background-color: #FFC107;
+  padding: 5px;
+  font-family: 'Noto Sans', sans-serif;
+}
+
 /* Navbar Styles */
 .navButt {
   text-align: left;
@@ -19,6 +28,21 @@ md-card-footer {
 /* Homepage Styles */
 .inputdemoBasicUsage .md-datepicker-button {
   width: 36px;
+}
+
+.home-logo {
+  height: 100px;
+}
+
+.home-subheader {
+  color: rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.home-body {
+  padding-top: 10%;
+  height: 400px;
+  padding-left: 33%;
 }
 
 /* Tale of Contents */
