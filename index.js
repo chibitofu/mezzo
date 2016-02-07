@@ -23,6 +23,8 @@ app.use('/api/alchemy',
   require('./server/controllers/alchemy'));
 app.use('/api/times',
   require('./server/controllers/times'));
+app.use('/api/wiki',
+  require('./server/controllers/wikipedia'));
 
 app.get('/*', function(req, res){
   res.sendFile(path.join(__dirname, 'client/index.html'));
