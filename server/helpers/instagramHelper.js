@@ -26,8 +26,8 @@ module.exports = {
             tagsFull.push(tags[i]);
           }
         }).then(function(resultTwo){
-          var tags = JSON.parse(resultOne);
-          var pagination = JSON.parse(resultOne).pagination;
+          var tags = JSON.parse(resultTwo);
+          var pagination = JSON.parse(resultTwo).pagination;
           if (pagination) {
             request(pagination.next_url, function(req, res) {
               var tags = JSON.parse(res.body).data;

@@ -1,17 +1,38 @@
 <div ng-controller="PhotosCtrl" ng-cloak>
+  <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
+    <md-card class="card-page-title top-banner">
+      <md-card-title class="todo-headline">
+        <span class="md-headline todo-headline"><ng-md-icon icon="photo_camera" style="fill:white" size="40"></ng-md-icon> Photos from {{weather.city.name}}</span>
+      </md-card-title>
+      <md-card-content hide-xs>
+        <div class="md-subhead todo-subheadline">7 day forecast</div>
+        <div layout="row" layout-xs="column" class="md-padding">
+          <div flex ng-repeat="day in weather.list" style="width: 115px;" class="weather-tile">
+            <img ng-src="http://openweathermap.org/img/w/{{day.weather[0].icon}}.png"><br>
+            <span>High {{day.temp.max | number : 0}}<small>&#8451;</small></span><br>
+            <span>Low {{day.temp.min | number : 0}}<small>&#8451;</small></span>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
+  </md-content>
   <md-content layout-padding>
     <md-grid-list
         md-cols-gt-md="6" md-cols="2" md-cols-sm="1" md-cols-xs="1" md-cols-md="4"
         md-row-height-gt-md="4:4" md-row-height="4:4"
         md-gutter-gt-md="4px" md-gutter-md="4px" md-gutter="4px">
       <md-grid-tile
-          ng-repeat="photo in tiles"
+          ng-repeat="photo in photos"
           ng-style="{
             'background-image': 'url({{photo.images.standard_resolution.url}})'
           }"
            class="photo-tiles">
+           <div>
+             <span><ng-md-icon icon="tab" style="fill:white" size="32" ng-click="showDialog($event, $index)" ></ng-md-icon></span>
+           </div>
        <md-grid-tile-footer class="photo-footer">
-         <div><small>{{photo.caption.text}}</small></div>
+         <h3>{{photo.caption.from.full_name}}</h3>
+         <div>{{photo.caption.text | hashGone}}</div>
        </md-grid-tile-footer>
       </md-grid-tile>
     </md-grid-list>

@@ -36,6 +36,12 @@ var app = angular.module('MezzoApp', ['ngRoute', 'ngMaterial', 'MezzoCtrls', 'Me
       return "NA"
     }
   }
+})
+.filter('hashGone', function() {
+  return function(word) {
+    word = word.replace(/#(\S*)/g, '');
+    return word;
+  }
 });
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){

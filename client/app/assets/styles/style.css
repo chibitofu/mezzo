@@ -115,8 +115,17 @@ md-card-footer {
 }
 
 .photo-footer {
-  padding: 5px;
+  padding: 10px;
+  height: 35%;
+  background: rgba(0, 0, 0, 0.68);
+  word-break: normal;
+}
+
+.photo-footer h3 {
+  color: #00BCD4;
+}
+
+.photo-footer div {
   font-size: 12px;
-  height: 100px;
-  word-wrap: break-word;
+  text-align: center;
 }

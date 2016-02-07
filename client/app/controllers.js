@@ -263,9 +263,18 @@ var callApis = function(){
        }
      }
    }
-   
+
 }])
 .controller('PhotosCtrl', ['$scope', '$http', '$location', '$routeParams', '$mdDialog', 'Instagram', 'tagsService', 'travelInfoService', 'weatherService', function($scope, $http, $location, $routeParams, $mdDialog, Instagram, tagsService, travelInfoService, weatherService){
+
+  // $scope.weather = weatherService.getWeatherInfo();
+  // console.log(  $scope.weather);
+
+  $http.get('app/assets/files/test_files/weather_test.json')
+  .success(function(data){
+    $scope.weather = data.weather;
+  });
+
 
   // $scope.instagram = tagsService.getTagsInfo();
 
@@ -276,9 +285,9 @@ var callApis = function(){
     createTile();
   })
   var createTile = function() {
-    $scope.tiles = [];
+    $scope.photos = [];
     for (var i = 0; i < $scope.instagram.length; i++) {
-      $scope.tiles.push({
+      $scope.photos.push({
         images: $scope.instagram[i].images,
         caption: $scope.instagram[i].caption,
         link: $scope.instagram[i].link,
@@ -286,8 +295,8 @@ var callApis = function(){
         tags: $scope.instagram[i].tags,
       });
     }
-    console.log($scope.tiles);
-    return $scope.tiles;
+    console.log($scope.photos);
+    return $scope.photos;
   };
 
   function randomSpan() {
@@ -310,14 +319,14 @@ var callApis = function(){
       parent: parentEl,
       scope: $scope,
       targetEvent: $scope,
-      templateUrl: "../app/views/partials/newsDialog.html",
+      templateUrl: "../app/views/partials/photosDialog.html",
       locals: {
-             items: $scope.alchemy[$index]
+             items: $scope.photos[$index]
            },
       controller: DialogController,
      });
      function DialogController($scope, $mdDialog, items){
-       $scope.alchemyDialog = items
+       $scope.fullPhoto = items
        $scope.closeDialog = function() {
          $mdDialog.hide();
        }
