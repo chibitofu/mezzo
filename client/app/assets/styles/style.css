@@ -12,6 +12,10 @@ md-card-footer {
   text-align: left;
 }
 
+.nav-logo {
+  width: 10%;
+}
+
 /* Homepage Styles */
 .inputdemoBasicUsage .md-datepicker-button {
   width: 36px;
