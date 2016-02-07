@@ -31,6 +31,11 @@ md-card-footer {
   text-decoration: none;
 }
 
+.toc-list-item {
+  color: rgb(255, 255, 255);
+  margin-left: 15px;
+}
+
 .toc-icon {
   border-radius: 10px 45%;
   border: 1px solid #ddd;

@@ -12,27 +12,52 @@
         <h5 class="md-toolbar-tools">Table of Contents</h5>
       </md-toolbar>
       <md-content ng-controller="RightCtrl" layout-padding>
-        <form>
-          <md-input-container>
-            <md-list>
-
-              <md-list-item>
-                <md-button type="button" href="/" class="navButt">Home</md-button>
+        <md-content class="toc-content">
+          <md-list layout="column" layout-align="center start">
+            <a href="/todo">
+              <md-list-item class="md-3-line">
+                  <div layout="row" layout-align="start center">
+                    <ng-md-icon icon="nature_people" style="fill:white" size="40"></ng-md-icon><span class="toc-list-item">Things Todo</span>
+                  </div>
               </md-list-item>
-
-              <md-list-item>
-                  <md-button type="button" href="/todo" class="navButt">Todo</md-button>
+            </a>
+            <a href="/news">
+              <md-list-item class="md-3-line">
+                <div layout="row" layout-align="start center">
+                  <ng-md-icon icon="local_library" style="fill:white" size="40"></ng-md-icon><span class="toc-list-item">News</span>
+                </div>
               </md-list-item>
-
-              <md-list-item>
-                  <md-button type="button" href="/news" class="navButt">News</md-button>
+            </a>
+            <a href="/photos">
+              <md-list-item class="md-3-line" layout="column">
+                <div layout="row" layout-align="start center">
+                  <ng-md-icon icon="photo_camera" style="fill:white" size="40"></ng-md-icon><span class="toc-list-item">Photos</span>
+                </div>
+                <div layout="row" layout-align="start center">
+                  <ng-md-icon icon="warning" style="fill:#B71C1C" size="12"></ng-md-icon>
+                  <span class="warning">Contains pictures from the internet.</span>
+                </div>
               </md-list-item>
-
-            </md-list>
-          </md-input-container>
-        </form>
+            </a>
+            <md-divider md-inset></md-divider>
+            <a href="/wiki">
+              <md-list-item class="md-3-line">
+                <div layout="row" layout-align="start center">
+                  <ng-md-icon icon="language" style="fill:white" size="40"></ng-md-icon><span class="toc-list-item">Wikipedia</span>
+                </div>
+              </md-list-item>
+            </a>
+            <a href="/restaurant">
+              <md-list-item class="md-3-line">
+                <div layout="row" layout-align="start center">
+                  <ng-md-icon icon="local_restaurant" style="fill:white" size="40"></ng-md-icon><span class="toc-list-item">Restaurants</span>
+                </div>
+              </md-list-item>
+            </a>
+          </md-list>
+        </md-content>
         <md-button ng-click="close()" class="md-primary">
-          X
+          <ng-md-icon icon="close" style="fill:#FFC107" size="28"></ng-md-icon>
         </md-button>
       </md-content>
     </md-sidenav>
