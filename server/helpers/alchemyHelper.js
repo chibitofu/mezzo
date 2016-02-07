@@ -3,12 +3,14 @@ var express = require('express'),
 
 module.exports = {
   articles: function(keyword, callback){
-    var alchemyApiStart = "https://gateway-a.watsonplatform.net/calls/data/GetNews?outputMode=json&start=now-1d&end=now&count=20&q.enriched.url.enrichedTitle.keywords.keyword.text=";
+    var alchemyApiStart = "https://gateway-a.watsonplatform.net/calls/data/GetNews?outputMode=json&start=now-1d&end=now";
+    var count = "&count=40";
+    var alchemyApiMid = "&q.enriched.url.enrichedTitle.keywords.keyword.text=";
     var key = keyword;
     var alchemyApiEnd = "&return=enriched.url.url,enriched.url.title,enriched.url.text,enriched.url.image";
     var apiKey = "&apikey=" + process.env.ALCHEMY_API_KEY;
 
-    var findArticles = alchemyApiStart + key + alchemyApiEnd + apiKey;
+    var findArticles = alchemyApiStart + count + alchemyApiMid + key + alchemyApiEnd + apiKey;
 
     request(findArticles, function(req, res){
       var articles = JSON.parse(res.body);

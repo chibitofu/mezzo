@@ -106,3 +106,17 @@ md-card-footer {
   background-repeat: no-repeat;
   background-position: top;;
 }
+
+/* Photos Grid */
+.photo-tiles {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.photo-footer {
+  padding: 5px;
+  font-size: 12px;
+  height: 100px;
+  word-wrap: break-word;
+}

@@ -5,7 +5,7 @@
         <span class="md-headline todo-headline"><ng-md-icon icon="local_library" style="fill:white" size="40"></ng-md-icon> News about {{weather.city.name}}</span>
       </md-card-title>
       <md-card-content hide-xs>
-        <div class="md-subhead todo-subheadline">Current Weather 7 day forecast</div>
+        <div class="md-subhead todo-subheadline">7 day forecast</div>
         <div layout="row" layout-xs="column" class="md-padding">
           <div flex ng-repeat="day in weather.list" style="width: 115px;" class="weather-tile">
             <img ng-src="http://openweathermap.org/img/w/{{day.weather[0].icon}}.png"><br>

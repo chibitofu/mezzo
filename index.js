@@ -1,6 +1,6 @@
 var express     = require('express'),
     dotenv      = require('dotenv').config(),
-    request     = require('request'),
+    request     = require('request-promise'),
     bodyParser  = require('body-parser'),
     expedia     = require('expedia'),
     instagram   = require('instagram'),

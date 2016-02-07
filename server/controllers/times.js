@@ -7,7 +7,6 @@ router.post('/', function(req, res){
 
   helper.times(query, function(articles){
     res.send(articles);
-    console.log(articles);
   });
 });
 

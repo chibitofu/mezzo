@@ -8,7 +8,6 @@ router.post('/', function(req, res){
 
   helper.forecast(location, country, function(forecast){
     res.send(forecast);
-    console.log(forecast);
   });
 });
 

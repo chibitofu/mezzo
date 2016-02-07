@@ -7,7 +7,6 @@ router.post('/', function(req, res){
 
   helper.articles(keyword, function(articles){
     res.send(articles);
-    console.log(articles);
   });
 });
 
@@ -16,7 +15,6 @@ router.post('/url', function(req, res){
 
   helper.text(url, function(text){
     res.send(text);
-    console.log(text);
   });
 });
 

@@ -6,8 +6,7 @@ router.post('/', function(req, res){
   var tag = req.body.city;
 
   helper.tags(tag, function(tag){
-    res.send(tag);
-    console.log(tag);
+    res.send(tag.tagsFull);
   });
 });
 

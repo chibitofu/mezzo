@@ -1,0 +1,19 @@
+<div ng-controller="PhotosCtrl" ng-cloak>
+  <md-content layout-padding>
+    <md-grid-list
+        md-cols-gt-md="6" md-cols="2" md-cols-sm="1" md-cols-xs="1" md-cols-md="4"
+        md-row-height-gt-md="4:4" md-row-height="4:4"
+        md-gutter-gt-md="4px" md-gutter-md="4px" md-gutter="4px">
+      <md-grid-tile
+          ng-repeat="photo in tiles"
+          ng-style="{
+            'background-image': 'url({{photo.images.standard_resolution.url}})'
+          }"
+           class="photo-tiles">
+       <md-grid-tile-footer class="photo-footer">
+         <div><small>{{photo.caption.text}}</small></div>
+       </md-grid-tile-footer>
+      </md-grid-tile>
+    </md-grid-list>
+  </md-content>
+</div>

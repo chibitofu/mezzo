@@ -94,11 +94,11 @@ var callApis = function(){
           });
       }).then(function(){
         Instagram.save(travelInfo).$promise.then(function(tag){
-          // $scope.instagram = tag.tags.data;
+          // $scope.instagram = tag;
           // tagsService.addTagsInfo($scope.instagram);
           $http.get('app/assets/files/test_files/tags_test.json')
           .success(function(data){
-            $scope.instagram = data.tags;
+            $scope.instagram = data;
           });
         }, function(error) {
             $http.get('app/assets/files/test_files/tags_test.json')
@@ -224,7 +224,6 @@ var callApis = function(){
 .controller('NewsCtrl', ['$scope', '$http', '$location', '$routeParams', 'Alchemy', 'travelInfoService', '$mdDialog', 'newsService', 'weatherService', function($scope, $http, $location, $routeParams, Alchemy, travelInfoService, $mdDialog, newsService, weatherService){
 
   $scope.travelInfo = travelInfoService.getTravelInfo();
-  console.log(travelInfoService.getTravelInfo());
 
   // $scope.alchemy = newsService.getNewsInfo();
   // console.log($scope.alchemy);
@@ -264,4 +263,65 @@ var callApis = function(){
        }
      }
    }
+   
+}])
+.controller('PhotosCtrl', ['$scope', '$http', '$location', '$routeParams', '$mdDialog', 'Instagram', 'tagsService', 'travelInfoService', 'weatherService', function($scope, $http, $location, $routeParams, $mdDialog, Instagram, tagsService, travelInfoService, weatherService){
+
+  // $scope.instagram = tagsService.getTagsInfo();
+
+  $http.get('app/assets/files/test_files/tags_test.json')
+  .success(function(data){
+    $scope.instagram = data;
+  }).then(function(){
+    createTile();
+  })
+  var createTile = function() {
+    $scope.tiles = [];
+    for (var i = 0; i < $scope.instagram.length; i++) {
+      $scope.tiles.push({
+        images: $scope.instagram[i].images,
+        caption: $scope.instagram[i].caption,
+        link: $scope.instagram[i].link,
+        location: $scope.instagram[i].location,
+        tags: $scope.instagram[i].tags,
+      });
+    }
+    console.log($scope.tiles);
+    return $scope.tiles;
+  };
+
+  function randomSpan() {
+    var r = Math.random();
+    if (r < 0.8) {
+      return 1;
+    } else if (r < 0.9) {
+      return 1;
+    } else {
+      return 1;
+    }
+  }
+
+  $scope.showDialog = showDialog;
+
+  function showDialog($event, $index) {
+    var parentEl = angular.element(document.body);
+
+    $mdDialog.show({
+      parent: parentEl,
+      scope: $scope,
+      targetEvent: $scope,
+      templateUrl: "../app/views/partials/newsDialog.html",
+      locals: {
+             items: $scope.alchemy[$index]
+           },
+      controller: DialogController,
+     });
+     function DialogController($scope, $mdDialog, items){
+       $scope.alchemyDialog = items
+       $scope.closeDialog = function() {
+         $mdDialog.hide();
+       }
+     }
+   }
+
 }]);

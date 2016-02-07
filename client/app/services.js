@@ -46,6 +46,7 @@ angular.module('MezzoServices', ['ngResource'])
     addTodoInfo: addTodoInfo,
     getTodoInfo: getTodoInfo
   };
+
 })
 .factory('newsService', function(){
   var newsInfo = {};
@@ -62,6 +63,7 @@ angular.module('MezzoServices', ['ngResource'])
     addNewsInfo: addNewsInfo,
     getNewsInfo: getNewsInfo
   };
+
 })
 .factory('weatherService', function(){
   var weatherInfo = {};
@@ -78,6 +80,7 @@ angular.module('MezzoServices', ['ngResource'])
     addWeatherInfo: addWeatherInfo,
     getWeatherInfo: getWeatherInfo
   };
+
 })
 .factory('tagsService', function(){
   var tagsInfo = {};
@@ -94,4 +97,5 @@ angular.module('MezzoServices', ['ngResource'])
     addTagsInfo: addTagsInfo,
     getTagsInfo: getTagsInfo
   };
+  
 });
