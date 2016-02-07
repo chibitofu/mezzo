@@ -1,5 +1,5 @@
 var express = require('express'),
-    request = require('request');
+    request = require('request-promise');
 
 module.exports = {
   articles: function(keyword, callback){

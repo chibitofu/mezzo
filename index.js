@@ -6,6 +6,8 @@ var express     = require('express'),
     instagram   = require('instagram'),
     alchemy     = require('alchemy-api'),
     path        = require('path'),
+    places      = require('googleplaces'),
+    geocoder    = require('geocoder'),
 
     app         = express();
 
@@ -25,6 +27,8 @@ app.use('/api/times',
   require('./server/controllers/times'));
 app.use('/api/wiki',
   require('./server/controllers/wikipedia'));
+app.use('/api/places',
+  require('./server/controllers/places'))
 
 app.get('/*', function(req, res){
   res.sendFile(path.join(__dirname, 'client/index.html'));

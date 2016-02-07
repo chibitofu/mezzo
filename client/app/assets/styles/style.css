@@ -145,16 +145,25 @@ md-card-footer {
 }
 
 /* Wiki */
+.wiki-headline {
+  font-family: 'Oleo Script', cursive;
+  font-size: 48px;
+  color: rgb(255, 255, 255);
+  background-color: #00E676;
+}
+
 #wiki-body {
-  padding: 0 50px
+  padding: 0 100px
 }
 
 #wiki-body ul {
   margin-left: 25px;
+  font-size: 14px;
 }
 
 #wiki-body ol {
   margin-left: 25px;
+  font-size: 14px;
 }
 
 #wiki-body p {
@@ -167,7 +176,7 @@ md-card-footer {
 }
 
 #wiki-body h2 {
-  color: #00BCD4;
+  color: #00E676;
 }
 
 #wiki-body h3 {

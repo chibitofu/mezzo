@@ -166,7 +166,7 @@ var callApis = function(){
 
   $http.get('app/assets/files/test_files/tags_test.json')
   .success(function(data){
-    $scope.instagram = data.tags.data;
+    $scope.instagram = data;
     console.log($scope.instagram);
   });
 

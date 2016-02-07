@@ -1,6 +1,7 @@
 var express = require('express'),
     request = require('request-promise');
-var tagsFull = [];
+var tagsFull = {'tags': []};
+
 module.exports = {
   tags: function(tag, callback){
     var instagramApiStart = "https://api.instagram.com/v1/tags/";
@@ -14,7 +15,7 @@ module.exports = {
     request(findTag, function(req, res){
       var tags= JSON.parse(res.body).data;
       for (var i = 0; i < tags.length; i++) {
-        tagsFull.push(tags[i]);
+        tagsFull.tags.push(tags[i]);
       }
     }).then(function(resultOne){
       var tags = JSON.parse(resultOne);
@@ -23,7 +24,7 @@ module.exports = {
         request(pagination.next_url, function(req, res) {
           var tags = JSON.parse(res.body).data;
           for (var i = 0; i < tags.length; i++) {
-            tagsFull.push(tags[i]);
+            tagsFull.tags.push(tags[i]);
           }
         }).then(function(resultTwo){
           var tags = JSON.parse(resultTwo);
@@ -32,7 +33,7 @@ module.exports = {
             request(pagination.next_url, function(req, res) {
               var tags = JSON.parse(res.body).data;
               for (var i = 0; i < tags.length; i++) {
-                tagsFull.push(tags[i]);
+                tagsFull.tags.push(tags[i]);
               }
               callback({tagsFull: tagsFull})
             });
