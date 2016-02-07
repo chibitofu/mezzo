@@ -333,4 +333,27 @@ var callApis = function(){
      }
    }
 
+}])
+.controller('WikiCtrl', ['$scope', '$http', '$location', '$routeParams', '$mdDialog', 'Wiki', 'wikiService', 'travelInfoService', 'weatherService', '$sce', function($scope, $http, $location, $routeParams, $mdDialog, Wiki, wikiService, travelInfoService, weatherService, $sce){
+
+  // $scope.weather = weatherService.getWeatherInfo();
+  // console.log(  $scope.weather);
+
+  $http.get('app/assets/files/test_files/weather_test.json')
+  .success(function(data){
+    $scope.weather = data.weather;
+  });
+
+  // $scope.wiki = wikiService.getWikiInfo();
+  // console.log(  $scope.wiki);
+
+  $http.get('app/assets/files/test_files/wiki_test.json')
+  .success(function(data){
+    $scope.wiki = data.wiki;
+    var wikiId = Object.keys($scope.wiki.query.pages)
+    $scope.wiki = $scope.wiki.query.pages[wikiId].extract;
+    $scope.wiki = $sce.trustAsHtml($scope.wiki);
+  });
+
+
 }]);

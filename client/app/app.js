@@ -67,6 +67,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     templateUrl: 'app/views/photos.html',
     controller: 'PhotosCtrl'
   })
+  .when('/wiki', {
+    templateUrl: 'app/views/wiki.html',
+    controller: 'WikiCtrl'
+  })
   .otherwise({
     templateUrl: 'app/views/404.html'
   });

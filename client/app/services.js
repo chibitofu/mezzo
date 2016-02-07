@@ -14,6 +14,9 @@ angular.module('MezzoServices', ['ngResource'])
 .factory('Weather', ['$resource', function($resource){
   return $resource('http://localhost:3000/api/weather');
 }])
+.factory('Wiki', ['$resource', function($resource){
+  return $resource('http://localhost:3000/api/weather');
+}])
 .factory('travelInfoService', function(){
   var travelInfo = {};
 
@@ -97,5 +100,21 @@ angular.module('MezzoServices', ['ngResource'])
     addTagsInfo: addTagsInfo,
     getTagsInfo: getTagsInfo
   };
-  
-});
+
+})
+.factory('wikiService', function(){
+  var wikiInfo = {};
+
+  var addWikiInfo = function(info){
+    wikiInfo = info;
+  }
+
+  var getWikiInfo = function(){
+    return wikiInfo;
+  }
+
+  return {
+    addWikiInfo: addWikiInfo,
+    getWikiInfo: getWikiInfo
+  };
+})

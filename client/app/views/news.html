@@ -1,7 +1,7 @@
 <div ng-controller="NewsCtrl" ng-cloak>
   <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
     <md-card class="card-page-title top-banner">
-      <md-card-title class="todo-headline">
+      <md-card-title class="news-headline">
         <span class="md-headline todo-headline"><ng-md-icon icon="local_library" style="fill:white" size="40"></ng-md-icon> News about {{weather.city.name}}</span>
       </md-card-title>
       <md-card-content hide-xs>
@@ -18,7 +18,7 @@
   </md-content>
   <md-content class="md-padding" layout-xs="column" layout-gt-xs="row" layout-wrap layout-align="center" flex>
     <md-card ng-repeat="item in alchemy" class="news-content" flex-gt-sm="30" flex-sm="35" flex-xs="50">
-      <md-card-header class="todo-title">
+      <md-card-header class="news-title">
         <md-card-header-text>
           <span class="md-title">{{item.source.enriched.url.title}}</span>
           <span class="md-subhead">News</span>

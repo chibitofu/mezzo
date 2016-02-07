@@ -1,0 +1,21 @@
+<div ng-cloak>
+  <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
+    <md-card class="card-page-title top-banner">
+      <md-card-title class="todo-headline">
+        <span class="md-headline todo-headline"><ng-md-icon icon="language" style="fill:white" size="40"></ng-md-icon> Wikipedia for  {{weather.city.name}}</span>
+      </md-card-title>
+      <md-card-content hide-xs>
+        <div class="md-subhead todo-subheadline">7 day forecast</div>
+        <div layout="row" layout-xs="column" class="md-padding">
+          <div flex ng-repeat="day in weather.list" style="width: 115px;" class="weather-tile">
+            <img ng-src="http://openweathermap.org/img/w/{{day.weather[0].icon}}.png"><br>
+            <span>High {{day.temp.max | number : 0}}<small>&#8451;</small></span><br>
+            <span>Low {{day.temp.min | number : 0}}<small>&#8451;</small></span>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
+  </md-content>
+  <md-content class="md-padding" layout="column" layout-align="center" ng-bind-html="wiki" ng-model="wiki" id="wiki-body" flex layout-padding>
+  </md-content>
+</div>

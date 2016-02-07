@@ -62,7 +62,7 @@ md-card-footer {
 .todo-headline {
   font-family: 'Oleo Script', cursive;
   font-size: 48px;
-  background-color: #00BCD4;
+  background-color: #EF5350;
   color: rgb(255, 255, 255);
 }
 
@@ -81,7 +81,8 @@ md-card-footer {
 }
 
 .todo-title {
-  background: #00BCD4;
+  font-size: 22px;
+  background: #B71C1C;
   color: rgb(255, 255, 255);
 }
 
@@ -91,6 +92,18 @@ md-card-footer {
 }
 
 /* News Cards */
+.news-headline {
+  font-family: 'Oleo Script', cursive;
+  font-size: 48px;
+  background-color: #00BCD4;
+  color: rgb(255, 255, 255);
+}
+
+.news-title {
+  background: #00838F;
+  color: rgb(255, 255, 255);
+}
+
 .news-content {
   background-color: rgb(255, 255, 255);
   color: rgba(0, 0, 0, 0.7);
@@ -98,6 +111,7 @@ md-card-footer {
 
 .news-body {
   overflow: scroll;
+  font-family: 'Slabo 27px', serif;
 }
 
 .news-image {
@@ -128,4 +142,38 @@ md-card-footer {
 .photo-footer div {
   font-size: 12px;
   text-align: center;
+}
+
+/* Wiki */
+#wiki-body {
+  padding: 0 50px
+}
+
+#wiki-body ul {
+  margin-left: 25px;
+}
+
+#wiki-body ol {
+  margin-left: 25px;
+}
+
+#wiki-body p {
+  font-family: 'Slabo 27px', serif;
+}
+
+#wiki-body p b {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 28px;
+}
+
+#wiki-body h2 {
+  color: #00BCD4;
+}
+
+#wiki-body h3 {
+  color: #FFC107;
+}
+
+#wiki-body h4 {
+  color: #FF6F00;
 }

@@ -28,12 +28,18 @@
         <img ng-src="http:{{item.imageUrl}}" class="md-media-lg card-media">
       </md-card-title-media>
       <md-card-title class="card-body">
-        <md-card-title-text>
-          <span class="md-headline">Price {{item.fromPrice}}</span>
-        </md-card-title-text>
       </md-card-title>
       <md-card-content class="card-body">
-        <p>Rating: {{item.recommendationScore | isNA}}</p>
+        <div>
+          <span class="md-headline">
+          Price {{item.fromPrice}}
+          </span>
+        </div>
+        <div style="text-align: left">
+          <span>
+            Rating: {{item.recommendationScore | isNA}}
+          </span>
+        </div>
       </md-card-content>
       <md-card-footer>
         <div>
