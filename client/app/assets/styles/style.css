@@ -17,11 +17,34 @@ md-card-footer {
   width: 36px;
 }
 
+/* Tale of Contents */
+.toc-content a:link {
+  text-decoration: none;
+}
+.toc-content a:visited {
+  text-decoration: none;
+}
+.toc-content a:hover {
+  text-decoration: none;
+}
+.toc-content a:active {
+  text-decoration: none;
+}
+
+.toc-icon {
+  border-radius: 10px 45%;
+  border: 1px solid #ddd;
+  width: 60px;
+  margin: 16px;
+  text-align: center;
+  padding: 2px;
+}
+
 /* Weather */
 .weather-tile {
   font-size: 12px;
   background-color: rgb(255, 255, 255);
-  color: rgb(75, 75, 75);
+  color: rgba(0, 0, 0, 0.8);
   text-align: center;
   margin: 0 5px;
   padding: 5px;
@@ -32,14 +55,14 @@ md-card-footer {
 }
 
 .todo-subheadline {
-  color: rgb(75, 75, 75);
+  color: rgba(0, 0, 0, 0.8);
   text-align: center;
 }
 
 .todo-headline {
   font-family: 'Oleo Script', cursive;
   font-size: 48px;
-  background-color: rgb(149, 16, 16);
+  background-color: #00BCD4;
   color: rgb(255, 255, 255);
 }
 
@@ -54,23 +77,23 @@ md-card-footer {
   width: 350px;
   height: 500px;
   background-color: rgb(255, 255, 255);
-  color: rgb(75, 75, 75);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .todo-title {
-  background: rgb(149, 16, 16);
+  background: #00BCD4;
   color: rgb(255, 255, 255);
 }
 
 .todo-detail-content {
   background-color: rgb(255, 255, 255);
-  color: rgb(75, 75, 75);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 /* News Cards */
 .news-content {
   background-color: rgb(255, 255, 255);
-  color: rgb(75, 75, 75);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .news-body {
