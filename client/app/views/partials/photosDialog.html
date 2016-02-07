@@ -1,16 +1,9 @@
 <md-dialog ng-controller="PhotosCtrl">
   <md-content class="md-padding" layout-align="center" ng-model="fullPhoto">
     <md-card class="news-content">
-      <md-card-con-media>
-        <img ng-src="{{fullPhoto.images.standard_resolution.url}}" class="md-media-sm card-media">
+      <md-card-title-media>
+        <img ng-src="{{fullPhoto.images.standard_resolution.url}}" class="md-media-md card-media">
       </md-card-title-media>
-      <md-card-footer>
-        <div>
-          <md-button ng-click="closeDialog()" class="md-raised md-primary md-hue-1">
-            Close
-          </md-button>
-        </div>
-      </md-card-footer>
     </md-card>
   </md-content>
 </md-dialog>

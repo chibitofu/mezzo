@@ -1,16 +1,15 @@
 <div ng-controller="MenuCtrl" layout="column" ng-cloak>
+  <md-content flex layout-padding layout="column" layout-align="end">
+        <md-button ng-click="toggleRight()"
+          ng-hide="isOpenRight()"
+          class="md-primary" style="text-align: right">
+          <ng-md-icon icon="menu" style="fill:#00BCD4" size="40"></ng-md-icon>
+        </md-button>
+  </md-content>
   <section layout="row" flex>
-    <md-content flex layout-padding>
-          <md-button ng-click="toggleRight()"
-            ng-hide="isOpenRight()"
-            class="md-primary">
-            Menu
-          </md-button>
-      <div flex></div>
-    </md-content>
     <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right" layout-align="start">
       <md-toolbar class="md-theme-dark">
-        <h5 class="md-toolbar-tools">Menu</h5>
+        <h5 class="md-toolbar-tools">Table of Contents</h5>
       </md-toolbar>
       <md-content ng-controller="RightCtrl" layout-padding>
         <form>

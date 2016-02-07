@@ -132,7 +132,6 @@ md-card-footer {
   padding: 10px;
   height: 35%;
   background: rgba(0, 0, 0, 0.68);
-  word-break: normal;
 }
 
 .photo-footer h3 {
@@ -142,6 +141,12 @@ md-card-footer {
 .photo-footer div {
   font-size: 12px;
   text-align: center;
+}
+
+.warning {
+  font-size: 10px;
+  color: rgba(184, 28, 28, 1);
+  margin-left: 5px;
 }
 
 /* Wiki */
@@ -185,4 +190,17 @@ md-card-footer {
 
 #wiki-body h4 {
   color: #FF6F00;
+}
+
+/* Restaurants */
+.restaurant-headline {
+  font-family: 'Oleo Script', cursive;
+  font-size: 48px;
+  background-color: #D500F9;
+  color: rgb(255, 255, 255);
+}
+
+.restaurant-title {
+  background: #AA00FF;
+  color: rgb(255, 255, 255);
 }

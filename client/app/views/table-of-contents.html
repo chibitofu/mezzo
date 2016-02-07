@@ -1,10 +1,10 @@
 <div ng-controller="TableCtrl" ng-cloak>
-  <md-toolbar class="md-theme-dark">
-      <h2 class="md-toolbar-tools">
+  <md-toolbar class="md-theme-dark" >
+      <h2 class="md-toolbar-tools" layout="row" layout-align="center center">
         <span><ng-md-icon icon="airplanemode_on" style="fill:white" size="72" class="toc-header-icon"></ng-md-icon></span><span>Table of Contents for your trip to {{weather.city.name}}</span>
       </h2>
     </md-toolbar>
-    <md-content class="toc-content">
+    <md-content class="toc-content" layout="row" layout-align="center center">
       <md-list>
         <a href="/todo">
           <md-list-item class="md-3-line">
@@ -32,6 +32,10 @@
             <div class="md-list-item-text">
               <h3>Photos taken around {{weather.city.name}}.</h3>
               <p>Instagram found {{instagram.length}} pictures for you.</p>
+              <div layout="row" layout-align="start center">
+              <ng-md-icon icon="warning" style="fill:#B71C1C" size="18"></ng-md-icon>
+              <span class="warning">Contains pictures from the internet.</span>
+            </div>
             </div>
             <md-divider md-inset></md-divider>
           </md-list-item>
@@ -43,6 +47,16 @@
             <div class="md-list-item-text">
               <h3>Wikipedia page about {{weather.city.name}}.</h3>
               <p>Learn all about {{weather.city.name}} from Wikipedia.</p>
+            </div>
+          </md-list-item>
+        </a>
+        <md-divider md-inset></md-divider>
+        <a href="/restaurant">
+          <md-list-item class="md-3-line">
+            <span class="toc-icon"><ng-md-icon icon="local_restaurant" style="fill:white" size="40"></ng-md-icon></span>
+            <div class="md-list-item-text">
+              <h3>Places to eat around  {{weather.city.name}}.</h3>
+              <p>Google found {{restaurants.length}} restaurants around {{weather.city.name}}.</p>
             </div>
           </md-list-item>
         </a>

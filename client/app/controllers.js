@@ -66,7 +66,6 @@ angular.module('MezzoCtrls', ['ngMaterial', 'ngRoute', 'MezzoServices'])
       };
 
       geocodeService.addGeocodeInfo($scope.geocodeInfo);
-      console.log($scope.geocodeInfo);
     }), function(error) {
       $http.get('app/assets/files/test_files/weather_test.json')
       .success(function(data){
@@ -112,7 +111,7 @@ var callApis = function(){
           // tagsService.addTagsInfo($scope.instagram);
           $http.get('app/assets/files/test_files/tags_test.json')
           .success(function(data){
-            $scope.instagram = data;
+            $scope.instagram = data.tags;
           });
         }, function(error) {
             $http.get('app/assets/files/test_files/tags_test.json')
@@ -137,7 +136,6 @@ var callApis = function(){
            Restaurant.save(geometry).$promise.then(function(restaurants){
              $scope.restuarants = restaurants;
              restaurantService.addRestaurantInfo($scope.restuarants);
-             console.log($scope.restuarants);
             //  console.log($scope.restuarants);
            }), function(error) {
              $http.get('app/assets/files/test_files/restuarants_test.json')
@@ -193,8 +191,14 @@ var callApis = function(){
 
   $http.get('app/assets/files/test_files/tags_test.json')
   .success(function(data){
-    $scope.instagram = data;
+    $scope.instagram = data.tags;
     console.log($scope.instagram);
+  });
+
+  $http.get('app/assets/files/test_files/restaurants_test.json')
+  .success(function(data){
+    $scope.restaurants = data.restaurants.results;
+    console.log($scope.restaurants);
   });
 
 }])
@@ -307,7 +311,7 @@ var callApis = function(){
 
   $http.get('app/assets/files/test_files/tags_test.json')
   .success(function(data){
-    $scope.instagram = data;
+    $scope.instagram = data.tags;
   }).then(function(){
     createTile();
   })
@@ -322,7 +326,6 @@ var callApis = function(){
         tags: $scope.instagram[i].tags,
       });
     }
-    console.log($scope.photos);
     return $scope.photos;
   };
 
@@ -345,6 +348,8 @@ var callApis = function(){
     $mdDialog.show({
       parent: parentEl,
       scope: $scope,
+      ariaLabel: 'picture',
+      clickOutsideToClose: true,
       targetEvent: $scope,
       templateUrl: "../app/views/partials/photosDialog.html",
       locals: {
@@ -387,8 +392,13 @@ var callApis = function(){
 
   $http.get('app/assets/files/test_files/restaurants_test.json')
   .success(function(data){
-    $scope.restuarants = data.restaurants.results;
-    console.log($scope.restuarants);
+    $scope.restaurants = data.restaurants.results;
+    console.log($scope.restaurants);
+  });
+
+  $http.get('app/assets/files/test_files/weather_test.json')
+  .success(function(data){
+    $scope.weather = data.weather;
   });
 
 }]);

@@ -26,13 +26,12 @@
           ng-style="{
             'background-image': 'url({{photo.images.standard_resolution.url}})'
           }"
-           class="photo-tiles">
-           <div>
-             <span><ng-md-icon icon="tab" style="fill:white" size="32" ng-click="showDialog($event, $index)" ></ng-md-icon></span>
-           </div>
-       <md-grid-tile-footer class="photo-footer">
-         <h3>{{photo.caption.from.full_name}}</h3>
-         <div>{{photo.caption.text | hashGone}}</div>
+           class="photo-tiles" ng-click="showDialog($event, $index)">
+       <md-grid-tile-footer class="photo-footer" layout=column>
+         <div>
+           <h3>{{photo.caption.from.full_name}}</h3>
+           <p>{{photo.caption.text | hashGone}}</p>
+         </div>
        </md-grid-tile-footer>
       </md-grid-tile>
     </md-grid-list>
