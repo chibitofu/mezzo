@@ -133,8 +133,6 @@ var callApis = function(){
                $scope.weather = data.weather;
              });
          }).then(function(){
-          //  $location.path('/table-of-contents');
-         }).then(function(){
            var geometry = geocodeService.getGeocodeInfo();
            Restaurant.save(geometry).$promise.then(function(restaurants){
              $scope.restuarants = restaurants;
@@ -147,6 +145,8 @@ var callApis = function(){
                $scope.restuarants = data;
              });
            }
+         }).then(function(){
+           $location.path('/table-of-contents');
          })
        });
      });
@@ -384,5 +384,11 @@ var callApis = function(){
 
 }])
 .controller('RestaurantCtrl', ['$scope', '$http', '$location', '$routeParams', '$mdDialog', 'Restaurant', 'restaurantService', 'travelInfoService', 'weatherService', function($scope, $http, $location, $routeParams, $mdDialog, Restaurant, restaurantService, travelInfoService, weatherService){
+
+  $http.get('app/assets/files/test_files/restaurants_test.json')
+  .success(function(data){
+    $scope.restuarants = data.restaurants.results;
+    console.log($scope.restuarants);
+  });
 
 }]);
