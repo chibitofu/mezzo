@@ -15,7 +15,7 @@ angular.module('MezzoServices', ['ngResource'])
   return $resource('http://localhost:3000/api/weather');
 }])
 .factory('Wiki', ['$resource', function($resource){
-  return $resource('http://localhost:3000/api/weather');
+  return $resource('http://localhost:3000/api/wiki');
 }])
 .factory('Places', ['$resource', function($resource){
   return $resource('http://localhost:3000/api/places');

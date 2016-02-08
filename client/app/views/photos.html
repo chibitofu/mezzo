@@ -2,7 +2,7 @@
 <div ng-include="'app/views/partials/navbar.html'"></div>
 
 <div ng-controller="PhotosCtrl" ng-cloak>
-  <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
+  <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center" data-ng-init="createTile()">
     <md-card class="card-page-title top-banner">
       <md-card-title class="todo-headline">
         <span class="md-headline todo-headline"><ng-md-icon icon="photo_camera" style="fill:white" size="40"></ng-md-icon> Photos from {{weather.city.name}}</span>

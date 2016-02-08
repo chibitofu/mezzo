@@ -14,6 +14,7 @@ router.post('/url', function(req, res){
   var url = req.body.url;
 
   helper.text(url, function(text){
+    console.log(text);
     res.send(text);
   });
 });

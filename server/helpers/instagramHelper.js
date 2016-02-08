@@ -1,12 +1,12 @@
-var express = require('express'),
-    request = require('request-promise');
-var tagsFull = {'tags': []};
+var express   = require('express'),
+    request   = require('request-promise'),
+    tagsFull  = {'tags': []};
 
 module.exports = {
   tags: function(tag, callback){
     var instagramApiStart = "https://api.instagram.com/v1/tags/";
     var tagName = tag;
-    var count = "&count=100";
+    var count = "&count=66";
     var instagramApiEnd = "/media/recent"
     var apiKey = "?access_token=" + process.env.INSTAGRAM_ACCESS_TOKEN;
 
