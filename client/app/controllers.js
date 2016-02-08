@@ -449,4 +449,18 @@ var callApis = function(){
 
   }
 
+}])
+.controller('HotelsCtrl', ['$scope', '$http', '$location', '$routeParams', 'Weather', 'weatherService', 'hotelService', function($scope, $http, $location, $routeParams, Weather, weatherService, hotelService){
+
+  $http.get('app/assets/files/test_files/weather_test.json')
+  .success(function(data){
+    $scope.weather = data.weather;
+  });
+
+  $http.get('app/assets/files/test_files/hotel_test.json')
+  .success(function(data){
+    $scope.hotels = data.places.results;
+    console.log($scope.hotels);
+  });
+
 }]);

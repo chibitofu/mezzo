@@ -79,6 +79,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     templateUrl: 'app/views/map.html',
     controller: 'MapCtrl'
   })
+  .when('/hotels', {
+    templateUrl: 'app/views/hotels.html',
+    controller: 'HotelsCtrl'
+  })
   .otherwise({
     templateUrl: 'app/views/404.html'
   });

@@ -267,3 +267,38 @@ footer {
   background-color: #CCC;
   margin-bottom: 25px;
 }
+
+/* Hotel */
+.hotel-headline {
+  font-family: 'Oleo Script', cursive;
+  font-size: 48px;
+  background-color: #37474F;
+  color: rgb(255, 255, 255);
+}
+
+.hotel-icon {
+  margin-right: 15px;
+}
+
+#hotel-info h3 {
+  color: #FFC107;
+  font-size: 24px;
+  font-family: 'Oleo Script', cursive;
+}
+
+#hotel-info h4 {
+  color: #FF6F00;
+}
+
+#hotel-info p {
+  font-family: 'Slabo 27px', serif;
+}
+
+#hotel-info {
+  margin: 10px 0;
+}
+
+#hotel-subheader {
+  color: rgb(255, 255, 255);
+  background-color: #90A4AE;
+}

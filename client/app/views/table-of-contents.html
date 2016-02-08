@@ -73,6 +73,16 @@
             </div>
           </md-list-item>
         </a>
+        <md-divider md-inset></md-divider>
+        <a href="/hotels">
+          <md-list-item class="md-3-line">
+            <span class="toc-icon"><ng-md-icon icon="location_city" style="fill:white" size="40"></ng-md-icon></span>
+            <div class="md-list-item-text">
+              <h3>Places to stay in {{weather.city.name}}.</h3>
+              <p>Google found {{hotels.length}} hotels around {{weather.city.name}}.</p>
+            </div>
+          </md-list-item>
+        </a>
       </md-list>
     </md-content>
 </div>

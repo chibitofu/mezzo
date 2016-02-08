@@ -1,0 +1,44 @@
+<!-- Navbar, ng-include needs quotes in quotes -->
+<div ng-include="'app/views/partials/navbar.html'"></div>
+
+<div ng-controller="HotelsCtrl" ng-cloak>
+  <md-content class="md-padding" layout-xs="column" layout="row" layout-align="center center">
+    <md-card class="card-page-title top-banner">
+      <md-card-title class="hotel-headline">
+        <span class="md-headline hotel-headline"><ng-md-icon icon="location_city" style="fill:white" size="40"></ng-md-icon> Places to stay in  {{weather.city.name}}</span>
+      </md-card-title>
+      <md-card-content hide-xs>
+        <div class="md-subhead todo-subheadline">7 day forecast</div>
+        <div layout="row" layout-xs="column" class="md-padding">
+          <div flex ng-repeat="day in weather.list" style="width: 115px;" class="weather-tile">
+            <img ng-src="http://openweathermap.org/img/w/{{day.weather[0].icon}}.png"><br>
+            <span>High {{day.temp.max | number : 0}}<small>&#8451;</small></span><br>
+            <span>Low {{day.temp.min | number : 0}}<small>&#8451;</small></span>
+          </div>
+        </div>
+      </md-card-content>
+    </md-card>
+  </md-content>
+  <md-toolbar id="hotel-subheader">
+    <div class="md-toolbar-tools">
+      <h2 class="md-flex">Hotels</h2>
+    </div>
+  </md-toolbar>
+  <md-content layout="column" layout-align="center center">
+    <md-list>
+      <md-list-item class="md-3-line" ng-repeat="item in hotels" layout="column" layout-align="start center">
+        <div layout="row" layout-align="start center">
+          <div class="hotel-icon">
+              <ng-md-icon icon="domain" style="fill:white" size="40"></ng-md-icon>
+          </div>
+          <div id="restaurant-info" class="md-list-item-text" layout="column">
+            <h3>{{item.name}}</h3>
+            <p>{{item.vicinity}}</p>
+            <p>{{item.rating}} / 5</p>
+            <md-divider ng-if="!$last"></md-divider>
+          </div>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</div>
