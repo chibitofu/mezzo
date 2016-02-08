@@ -2,11 +2,7 @@ var express     = require('express'),
     dotenv      = require('dotenv').config(),
     request     = require('request-promise'),
     bodyParser  = require('body-parser'),
-    expedia     = require('expedia'),
-    instagram   = require('instagram'),
-    alchemy     = require('alchemy-api'),
     path        = require('path'),
-    places      = require('googleplaces'),
     geocoder    = require('geocoder'),
 
     app         = express();
