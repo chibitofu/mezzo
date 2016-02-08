@@ -21,7 +21,7 @@ angular.module('MezzoServices', ['ngResource'])
   return $resource('https://mezzo-travel.herokuapp.com/api/places');
 }])
 .factory('Geocode', ['$resource', function($resource){
-  return $resource('https://mezzo-travel.herokuapp.com//api/places/geocode');
+  return $resource('https://mezzo-travel.herokuapp.com/api/places/geocode');
 }])
 .factory('travelInfoService', function(){
   var travelInfo = {};

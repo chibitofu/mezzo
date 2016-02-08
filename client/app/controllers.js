@@ -94,7 +94,12 @@ var callApis = function(){
         if (news.articles.result) {
          $scope.alchemy = news.articles.result.docs;
          newsService.addNewsInfo($scope.alchemy);
-        }
+       } else {
+         $http.get('app/assets/files/test_files/alchemy_test.json')
+         .success(function(data){
+           $scope.alchemy = data.articles.result.docs;
+         })
+       }
       }, function(error) {
           $http.get('app/assets/files/test_files/alchemy_test.json')
           .success(function(data){
@@ -242,7 +247,6 @@ var callApis = function(){
   var noNews = function(){
     if ($scope.alchemy) {
       $scope.alchemy =
-        {'news':
           [
             {"source":
               {"enriched":
@@ -253,7 +257,7 @@ var callApis = function(){
             }
           }
         ]
-      }
+
     }
   }
 
