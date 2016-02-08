@@ -4,19 +4,19 @@ var express = require('express'),
 
 module.exports = {
 
-  restaurants: function(lat, lng, callback){
+  places: function(lat, lng, keyword, callback){
     var placesAPI = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=";
     var lat = lat;
     var lng = "," + lng;
     var radius = "&radius=50000"
-    var keyword = "&keyword=restaurant"
+    var key = "&keyword=" + keyword;
     var apiKey = "&key=" + process.env.GOOGLE_PLACES_API_KEY;
 
-    var findRestaurant = placesAPI + lat + lng + radius + keyword + apiKey;
+    var findPlace = placesAPI + lat + lng + radius + key + apiKey;
 
-    request(findRestaurant, function(req, res){
-      var restaurants = JSON.parse(res.body);
-      callback({restaurants: restaurants})
+    request(findPlace, function(req, res){
+      var places = JSON.parse(res.body);
+      callback({places: places})
     });
   },
 

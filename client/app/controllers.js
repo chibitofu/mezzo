@@ -23,7 +23,7 @@ angular.module('MezzoCtrls', ['ngMaterial', 'ngRoute', 'MezzoServices'])
     $mdSidenav('right').close();
   };
 }])
-.controller('HomeCtrl', ['$scope', '$http', '$location', '$routeParams', 'travelInfoService', 'Expedia', 'todoService', 'Alchemy', 'newsService', 'Weather', 'weatherService', 'Instagram', 'tagsService', '$interval', 'Geocode', 'geocodeService', 'Restaurant', 'restaurantService', function($scope, $http, $location, $routeParams, travelInfoService, Expedia, todoService, Alchemy, newsService, Weather, weatherService, Instagram, tagsService, $interval, Geocode, geocodeService, Restaurant, restaurantService){
+.controller('HomeCtrl', ['$scope', '$http', '$location', '$routeParams', 'travelInfoService', 'Expedia', 'todoService', 'Alchemy', 'newsService', 'Weather', 'weatherService', 'Instagram', 'tagsService', '$interval', 'Geocode', 'geocodeService', 'Places', 'restaurantService', 'hotelService', function($scope, $http, $location, $routeParams, travelInfoService, Expedia, todoService, Alchemy, newsService, Weather, weatherService, Instagram, tagsService, $interval, Geocode, geocodeService, Places, restaurantService, hotelService){
 
   $scope.travelForm = {
     city: '',
@@ -133,12 +133,27 @@ var callApis = function(){
              });
          }).then(function(){
            var geometry = geocodeService.getGeocodeInfo();
-           Restaurant.save(geometry).$promise.then(function(restaurants){
+           geometry.keyword = "restaurant";
+
+           Places.save(geometry).$promise.then(function(restaurants){
              $scope.restuarants = restaurants;
              restaurantService.addRestaurantInfo($scope.restuarants);
             //  console.log($scope.restuarants);
            }), function(error) {
              $http.get('app/assets/files/test_files/restuarants_test.json')
+             .success(function(data){
+               $scope.restuarants = data;
+             });
+           }
+         }).then(function(){
+           var geometry = geocodeService.getGeocodeInfo();
+           geometry.keyword = "hotel";
+
+           Places.save(geometry).$promise.then(function(hotels){
+             $scope.hotels = hotels.places.results;
+             hotelService.addHotelInfo($scope.hotels);
+           }), function(error) {
+             $http.get('app/assets/files/test_files/hotel_test.json')
              .success(function(data){
                $scope.restuarants = data;
              });
@@ -199,6 +214,12 @@ var callApis = function(){
   .success(function(data){
     $scope.restaurants = data.restaurants.results;
     console.log($scope.restaurants);
+  });
+
+  $http.get('app/assets/files/test_files/hotel_test.json')
+  .success(function(data){
+    $scope.hotels = data;
+    console.log($scope.hotels);
   });
 
 }])
@@ -388,7 +409,7 @@ var callApis = function(){
   });
 
 }])
-.controller('RestaurantCtrl', ['$scope', '$http', '$location', '$routeParams', '$mdDialog', 'Restaurant', 'restaurantService', 'travelInfoService', 'weatherService', function($scope, $http, $location, $routeParams, $mdDialog, Restaurant, restaurantService, travelInfoService, weatherService){
+.controller('RestaurantCtrl', ['$scope', '$http', '$location', '$routeParams', '$mdDialog', 'Places', 'restaurantService', 'travelInfoService', 'weatherService', function($scope, $http, $location, $routeParams, $mdDialog, Places, restaurantService, travelInfoService, weatherService){
 
   $http.get('app/assets/files/test_files/restaurants_test.json')
   .success(function(data){
