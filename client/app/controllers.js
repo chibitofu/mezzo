@@ -23,7 +23,7 @@ angular.module('MezzoCtrls', ['ngMaterial', 'ngRoute', 'MezzoServices'])
     $mdSidenav('right').close();
   };
 }])
-.controller('HomeCtrl', ['$scope', '$http', '$location', '$routeParams', 'travelInfoService', 'Expedia', 'todoService', 'Alchemy', 'newsService', 'Weather', 'weatherService', 'Instagram', 'tagsService', '$interval', 'Geocode', 'geocodeService', 'Places', 'restaurantService', 'hotelService', function($scope, $http, $location, $routeParams, travelInfoService, Expedia, todoService, Alchemy, newsService, Weather, weatherService, Instagram, tagsService, $interval, Geocode, geocodeService, Places, restaurantService, hotelService){
+.controller('HomeCtrl', ['$scope', '$http', '$location', '$routeParams', 'travelInfoService', 'Expedia', 'todoService', 'Alchemy', 'newsService', 'Weather', 'weatherService', 'Instagram', 'tagsService', '$interval', 'Geocode', 'geocodeService', 'Places', 'restaurantService', 'hotelService', '$interval', function($scope, $http, $location, $routeParams, travelInfoService, Expedia, todoService, Alchemy, newsService, Weather, weatherService, Instagram, tagsService, $interval, Geocode, geocodeService, Places, restaurantService, hotelService, $interval){
 
   $scope.travelForm = {
     city: '',
@@ -72,7 +72,7 @@ angular.module('MezzoCtrls', ['ngMaterial', 'ngRoute', 'MezzoServices'])
         $scope.geocodeInfo = data.geoLocation.results[0].geometry.location;
       });
     };
-
+    $scope.loading = true;
     callApis();
   }
 
@@ -81,12 +81,10 @@ var callApis = function(){
   var travelInfo = travelInfoService.getTravelInfo();
 
     Expedia.save(travelInfo).$promise.then(function(todo){
-      //  $scope.expedia = todo.thingsToDo;
-      //  todoService.addTodoInfo($scope.expedia);
-       $http.get('app/assets/files/test_files/todo_test.json')
-       .success(function(data){
-         $scope.expedia = data.thingsToDo;
-       });
+       $scope.expedia = todo.thingsToDo;
+       todoService.addTodoInfo($scope.expedia);
+       console.log($scope.expedia);
+
     }, function(error) {
         $http.get('app/assets/files/test_files/todo_test.json')
         .success(function(data){
@@ -94,12 +92,10 @@ var callApis = function(){
         });
     }).then(function(){
       Alchemy.save(travelInfo).$promise.then(function(news){
-        //  $scope.alchemy = news.articles.result.docs;
-        //  newsService.addNewsInfo($scope.alchemy);
-         $http.get('app/assets/files/test_files/alchemy_test.json')
-         .success(function(data){
-           $scope.alchemy = data.articles.result.docs;
-         });
+         $scope.alchemy = news.articles.result.docs;
+         newsService.addNewsInfo($scope.alchemy);
+         console.log($scope.alchemy);
+
       }, function(error) {
           $http.get('app/assets/files/test_files/alchemy_test.json')
           .success(function(data){
@@ -107,12 +103,10 @@ var callApis = function(){
           });
       }).then(function(){
         Instagram.save(travelInfo).$promise.then(function(tag){
-          // $scope.instagram = tag;
-          // tagsService.addTagsInfo($scope.instagram);
-          $http.get('app/assets/files/test_files/tags_test.json')
-          .success(function(data){
-            $scope.instagram = data.tags;
-          });
+          $scope.instagram = tag.tags;
+          tagsService.addTagsInfo($scope.instagram);
+          console.log($scope.instagram);
+
         }, function(error) {
             $http.get('app/assets/files/test_files/tags_test.json')
             .success(function(data){
@@ -120,12 +114,10 @@ var callApis = function(){
             });
         }).then(function(){
           Weather.save(travelInfo).$promise.then(function(forecast){
-          //  $scope.weather = forecast.weather;
-          //  weatherService.addWeatherInfo($scope.weather);
-           $http.get('app/assets/files/test_files/weather_test.json')
-           .success(function(data){
-             $scope.weather = data.weather;
-           });
+           $scope.weather = forecast.weather;
+           weatherService.addWeatherInfo($scope.weather);
+           console.log($scope.weather);
+
          }, function(error) {
              $http.get('app/assets/files/test_files/weather_test.json')
              .success(function(data){
@@ -138,7 +130,7 @@ var callApis = function(){
            Places.save(geometry).$promise.then(function(restaurants){
              $scope.restuarants = restaurants;
              restaurantService.addRestaurantInfo($scope.restuarants);
-            //  console.log($scope.restuarants);
+
            }), function(error) {
              $http.get('app/assets/files/test_files/restuarants_test.json')
              .success(function(data){
@@ -152,6 +144,7 @@ var callApis = function(){
            Places.save(geometry).$promise.then(function(hotels){
              $scope.hotels = hotels.places.results;
              hotelService.addHotelInfo($scope.hotels);
+
            }), function(error) {
              $http.get('app/assets/files/test_files/hotel_test.json')
              .success(function(data){
@@ -159,7 +152,8 @@ var callApis = function(){
              });
            }
          }).then(function(){
-           $location.path('/table-of-contents');
+               $scope.loading = false;
+          //  $location.path('/table-of-contents');
          })
        });
      });
@@ -173,54 +167,28 @@ var callApis = function(){
       .accentPalette('amber')
       .dark();
 })
-.controller('TableCtrl', ['$scope', '$http', '$location', '$routeParams', 'travelInfoService', function($scope, $http, $location, $routeParams, travelInfoService){
+.controller('TableCtrl', ['$scope', '$http', '$location', '$routeParams', 'travelInfoService', 'todoService', 'newsService', 'weatherService', 'tagsService', 'restaurantService', 'hotelService', function($scope, $http, $location, $routeParams, travelInfoService, todoService, newsService, weatherService, tagsService, restaurantService, hotelService){
 
   $scope.travelInfo = travelInfoService.getTravelInfo();
   console.log($scope.travelInfo);
 
-  $http.get('app/assets/files/test_files/todo_test.json')
-  .success(function(data){
-    $scope.expedia = data.thingsToDo;
-    console.log($scope.expedia);
-  });
+  $scope.expedia = todoService.getTodoInfo();
+  console.log($scope.expedia);
 
+  $scope.alchemy = newsService.getNewsInfo();
+  console.log($scope.alchemy);
 
-  $http.get('app/assets/files/test_files/weather_test.json')
-  .success(function(data){
-    $scope.weather = data.weather;
-    console.log($scope.weather);
-  });
+  $scope.weather = weatherService.getWeatherInfo();
+  console.log($scope.weather);
 
-  $http.get('app/assets/files/test_files/alchemy_test.json')
-  .success(function(data){
-    $scope.alchemy = data.articles.result.docs;
-    console.log($scope.alchemy);
-  });
+  $scope.instagram = tagsService.getTagsInfo();
+  console.log($scope.instagram);
 
+  $scope.restuarants = restaurantService.getRestaurantInfo();
+  console.log($scope.restuarants);
 
-  $http.get('app/assets/files/test_files/weather_test.json')
-  .success(function(data){
-    $scope.weather = data.weather;
-    console.log($scope.weather);
-  });
-
-  $http.get('app/assets/files/test_files/tags_test.json')
-  .success(function(data){
-    $scope.instagram = data.tags;
-    console.log($scope.instagram);
-  });
-
-  $http.get('app/assets/files/test_files/restaurants_test.json')
-  .success(function(data){
-    $scope.restaurants = data.restaurants.results;
-    console.log($scope.restaurants);
-  });
-
-  $http.get('app/assets/files/test_files/hotel_test.json')
-  .success(function(data){
-    $scope.hotels = data;
-    console.log($scope.hotels);
-  });
+  $scope.hotels = hotelService.getHotelInfo();
+  console.log($scope.hotels);
 
 }])
 .controller('TodoCtrl', ['$scope', '$http', '$location', '$routeParams', 'travelInfoService', 'Expedia', 'Weather', 'ExpediaDetail', '$mdDialog', 'todoService', 'weatherService', function($scope, $http, $location, $routeParams, travelInfoService, Expedia, Weather, ExpediaDetail, $mdDialog, todoService, weatherService){
