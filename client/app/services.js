@@ -1,27 +1,27 @@
 angular.module('MezzoServices', ['ngResource'])
 .factory('Alchemy', ['$resource', function($resource){
-  return $resource('http://localhost:3000/api/alchemy');
+  return $resource('https://mezzo-travel.herokuapp.com//api/alchemy');
 }])
 .factory('Expedia', ['$resource', function($resource){
-  return $resource('http://localhost:3000/api/expedia');
+  return $resource('https://mezzo-travel.herokuapp.com//api/expedia');
 }])
 .factory('ExpediaDetail', ['$resource', function($resource){
-  return $resource('http://localhost:3000/api/expedia/detail');
+  return $resource('https://mezzo-travel.herokuapp.com//api/expedia/detail');
 }])
 .factory('Instagram', ['$resource', function($resource){
-  return $resource('http://localhost:3000/api/instagram');
+  return $resource('https://mezzo-travel.herokuapp.com//api/instagram');
 }])
 .factory('Weather', ['$resource', function($resource){
-  return $resource('http://localhost:3000/api/weather');
+  return $resource('https://mezzo-travel.herokuapp.com//api/weather');
 }])
 .factory('Wiki', ['$resource', function($resource){
-  return $resource('http://localhost:3000/api/wiki');
+  return $resource('https://mezzo-travel.herokuapp.com//api/wiki');
 }])
 .factory('Places', ['$resource', function($resource){
-  return $resource('http://localhost:3000/api/places');
+  return $resource('https://mezzo-travel.herokuapp.com//api/places');
 }])
 .factory('Geocode', ['$resource', function($resource){
-  return $resource('http://localhost:3000/api/places/geocode');
+  return $resource('https://mezzo-travel.herokuapp.com//api/places/geocode');
 }])
 .factory('travelInfoService', function(){
   var travelInfo = {};
