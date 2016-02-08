@@ -16,6 +16,7 @@
     "dotenv": "^2.0.0",
     "expedia": "0.0.3",
     "express": "^4.13.4",
+    "geocoder": "^0.2.2",
     "instagram": "0.0.4",
     "path": "^0.12.7",
     "pg": "^4.4.4",
