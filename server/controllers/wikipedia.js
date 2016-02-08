@@ -5,9 +5,18 @@ var express = require('express'),
 router.post('/', function(req, res){
   var location = req.body.city;
 
-  helper.wiki(location, function(wiki){
-    res.send(wiki);
-  });
+  if (location.indexOf(" ") >= 0) {
+    location = location.split(" ");
+    location = location.join('+');
+    helper.wiki(location, function(wiki){
+      res.send(wiki);
+    });
+  } else {
+    helper.wiki(location, function(wiki){
+      res.send(wiki);
+    });
+  }
+
 });
 
 module.exports = router;

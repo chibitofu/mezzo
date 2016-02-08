@@ -4,6 +4,7 @@ var express   = require('express'),
 
 module.exports = {
   tags: function(tag, callback){
+
     var instagramApiStart = "https://api.instagram.com/v1/tags/";
     var tagName = tag;
     var count = "&count=66";
@@ -12,6 +13,12 @@ module.exports = {
 
     var findTag = instagramApiStart + tagName + instagramApiEnd + apiKey + count;
 
+    // request(findTag, function(req, res){
+    //   var tags = JSON.parse(res.body);
+    //   console.log(tags);
+    //   callback({tags: tags})
+    // });
+
     request(findTag, function(req, res){
       var tags= JSON.parse(res.body).data;
       for (var i = 0; i < tags.length; i++) {
@@ -19,8 +26,8 @@ module.exports = {
       }
     }).then(function(resultOne){
       var tags = JSON.parse(resultOne);
-      var pagination = JSON.parse(resultOne).pagination;
-      if (pagination) {
+      if (JSON.parse(resultOne).pagination) {
+        var pagination = JSON.parse(resultOne).pagination;
         request(pagination.next_url, function(req, res) {
           var tags = JSON.parse(res.body).data;
           for (var i = 0; i < tags.length; i++) {
@@ -28,8 +35,8 @@ module.exports = {
           }
         }).then(function(resultTwo){
           var tags = JSON.parse(resultTwo);
-          var pagination = JSON.parse(resultTwo).pagination;
-          if (pagination) {
+          if (JSON.parse(resultTwo).pagination) {
+            var pagination = JSON.parse(resultTwo).pagination;
             request(pagination.next_url, function(req, res) {
               var tags = JSON.parse(res.body).data;
               for (var i = 0; i < tags.length; i++) {
@@ -37,8 +44,12 @@ module.exports = {
               }
               callback({tagsFull: tagsFull})
             });
+          } else {
+            callback({tagsFull: tagsFull})
           }
         });
+      } else {
+        callback({tagsFull: tagsFull})
       }
     });
   }

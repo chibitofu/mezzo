@@ -6,9 +6,19 @@ router.post('/', function(req, res){
   var lat     = req.body.lat;
   var lng     = req.body.lng;
   var keyword = req.body.keyword;
-  helper.places(lat, lng, keyword, function(places){
-    res.send(places);
-  });
+
+  if (keyword.indexOf(" ") >= 0) {
+    keyword = keyword.split(" ");
+    keyword = keyword.join('+');
+    helper.places(lat, lng, keyword, function(places){
+      res.send(places);
+    });
+  } else {
+    helper.places(lat, lng, keyword, function(places){
+      res.send(places);
+    });
+  }
+
 });
 
 router.post('/geocode', function(req, res){

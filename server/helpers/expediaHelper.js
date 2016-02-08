@@ -4,6 +4,7 @@ var express = require('express'),
 module.exports = {
 
   thingsToDo: function(loc, start, end, callback){
+
     var expediaAPI = "http://terminal2.expedia.com:80/x/activities/search?";
     var location = "location=" + loc;
     var startDate = "&startDate=" + start;

@@ -3,6 +3,7 @@ var express = require('express'),
 
 module.exports = {
   articles: function(keyword, callback){
+
     var alchemyApiStart = "https://gateway-a.watsonplatform.net/calls/data/GetNews?outputMode=json&start=now-1d&end=now";
     var count = "&count=40";
     var alchemyApiMid = "&q.enriched.url.enrichedTitle.keywords.keyword.text=";

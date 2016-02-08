@@ -48,6 +48,7 @@ angular.module('MezzoCtrls', ['ngMaterial', 'ngRoute', 'MezzoServices'])
 
 //Creates an object fro the form, to be used in all the api calls//
   $scope.makeMagazine = function(city, country, startDate, endDate){
+
     $scope.travelInfo = {
       city:      city,
       country:   country,
@@ -98,12 +99,14 @@ var callApis = function(){
          $http.get('app/assets/files/test_files/alchemy_test.json')
          .success(function(data){
            $scope.alchemy = data.articles.result.docs;
+           newsService.addNewsInfo($scope.alchemy);
          })
        }
       }, function(error) {
           $http.get('app/assets/files/test_files/alchemy_test.json')
           .success(function(data){
             $scope.alchemy = data.articles.result.docs;
+            newsService.addNewsInfo($scope.alchemy);
           });
       }).then(function(){
         Instagram.save(travelInfo).$promise.then(function(tag){
@@ -186,18 +189,14 @@ var callApis = function(){
   $scope.expedia = todoService.getTodoInfo();
 
   $scope.alchemy = newsService.getNewsInfo();
-  console.log($scope.alchemy);
 
   $scope.weather = weatherService.getWeatherInfo();
 
   $scope.instagram = tagsService.getTagsInfo();
-  console.log($scope.instagram);
 
   $scope.restaurants = restaurantService.getRestaurantInfo();
-  console.log($scope.restaurants);
 
   $scope.hotels = hotelService.getHotelInfo();
-  console.log($scope.hotels);
 
   $scope.wiki = wikiService.getWikiInfo();
 
@@ -216,8 +215,6 @@ var callApis = function(){
   var thisEvent = $event;
     ExpediaDetail.save({'id' : id}).$promise.then(function(data){
     $scope.expediaDetail = data.thingsToDoDetail;
-      console.log("Expedia Detail");
-      console.log($scope.expediaDetail);
 
     var parentEl = angular.element(document.body);
 
@@ -359,7 +356,6 @@ var callApis = function(){
   $scope.weather = weatherService.getWeatherInfo();
 
   $scope.restaurants = restaurantService.getRestaurantInfo();
-  console.log($scope.restaurants);
 
 }])
 .controller('MapCtrl', ['$scope', '$http', '$location', '$routeParams', 'geocodeService', 'Weather', 'weatherService', function($scope, $http, $location, $routeParams, geocodeService, Weather, weatherService){
@@ -386,6 +382,5 @@ var callApis = function(){
   $scope.weather = weatherService.getWeatherInfo();
 
   $scope.hotels = hotelService.getHotelInfo();
-  console.log($scope.hotels);
 
 }]);

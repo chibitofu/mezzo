@@ -7,9 +7,18 @@ router.post('/', function(req, res){
   var startDate = req.body.startDate;
   var endDate = req.body.endDate;
 
-  helper.thingsToDo(location, startDate, endDate, function(thingsToDo){
-    res.send(thingsToDo);
-  });
+  if (location.indexOf(" ") >= 0) {
+    location = location.split(" ");
+    location = location.join('+');
+    helper.thingsToDo(location, startDate, endDate, function(thingsToDo){
+      res.send(thingsToDo);
+    });
+  } else {
+    helper.thingsToDo(location, startDate, endDate, function(thingsToDo){
+      res.send(thingsToDo);
+    });
+  }
+
 });
 
 router.post('/detail', function(req, res){

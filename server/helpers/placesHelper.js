@@ -5,6 +5,7 @@ var express = require('express'),
 module.exports = {
 
   places: function(lat, lng, keyword, callback){
+
     var placesAPI = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=";
     var lat = lat;
     var lng = "," + lng;
