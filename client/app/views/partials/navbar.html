@@ -1,12 +1,14 @@
 <div ng-controller="MenuCtrl" layout="column" ng-cloak>
   <md-content flex layout-padding layout="column" layout-align="end">
     <div layout="row" layout-align="space-between start">
-      <a href="/">
+      <md-content>
+      <a href="/table-of-contents">
         <img src="../app/assets/img/Mezzo.png"  class="nav-logo">
       </a>
+    </md-content>
       <md-button ng-click="toggleRight()"
         ng-hide="isOpenRight()"
-        class="md-primary" style="text-align: right">
+        class="md-primary" style="text-align: right" aria-label="Menu Open">
         <ng-md-icon icon="menu" style="fill:#00BCD4" size="40"></ng-md-icon>
       </md-button>
     </div>
@@ -22,7 +24,7 @@
             <a href="/">
               <md-list-item class="md-3-line">
                   <div layout="row" layout-align="start center">
-                    <ng-md-icon icon="home" style="fill:white" size="40"></ng-md-icon><span class="toc-list-item">Home</span>
+                    <ng-md-icon icon="home" style="fill:white" size="40"></ng-md-icon><span class="toc-list-item">New Vacation</span>
                   </div>
               </md-list-item>
             </a>
@@ -73,9 +75,16 @@
                 </div>
               </md-list-item>
             </a>
+            <a href="/map">
+              <md-list-item class="md-3-line">
+                <div layout="row" layout-align="start center">
+                  <ng-md-icon icon="map" style="fill:white" size="40"></ng-md-icon><span class="toc-list-item">Map</span>
+                </div>
+              </md-list-item>
+            </a>
           </md-list>
         </md-content>
-        <md-button ng-click="close()" class="md-primary">
+        <md-button ng-click="close()" class="md-primary" aria-label="Menu Close">
           <ng-md-icon icon="close" style="fill:#FFC107" size="28"></ng-md-icon>
         </md-button>
       </md-content>

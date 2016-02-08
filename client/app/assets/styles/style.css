@@ -22,7 +22,7 @@ footer {
 }
 
 .nav-logo {
-  width: 10%;
+  height: 75px;
 }
 
 /* Homepage Styles */
@@ -229,11 +229,41 @@ footer {
 .restaurant-headline {
   font-family: 'Oleo Script', cursive;
   font-size: 48px;
-  background-color: #D500F9;
+  background-color: #673AB7;
   color: rgb(255, 255, 255);
 }
 
-.restaurant-title {
-  background: #AA00FF;
+.restaurant-icon {
+  margin-right: 15px;
+}
+
+#restaurant-info h3 {
+  color: #FFC107;
+  font-size: 24px;
+  font-family: 'Oleo Script', cursive;
+}
+
+#restaurant-info h4 {
+  color: #FF6F00;
+}
+
+#restaurant-info p {
+  font-family: 'Slabo 27px', serif;
+}
+
+#restaurant-info {
+  margin: 10px 0;
+}
+
+#restaurant-subheader {
   color: rgb(255, 255, 255);
+  background-color: #9575CD;
+}
+
+/* Map */
+#map {
+  width: 500px;
+  height: 400px;
+  background-color: #CCC;
+  margin-bottom: 25px;
 }

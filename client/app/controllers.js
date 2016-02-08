@@ -401,4 +401,31 @@ var callApis = function(){
     $scope.weather = data.weather;
   });
 
+}])
+.controller('MapCtrl', ['$scope', '$http', '$location', '$routeParams', 'geocodeService', 'Weather', 'weatherService', function($scope, $http, $location, $routeParams, geocodeService, Weather, weatherService){
+
+  // var geometry = geocodeService.getGeocodeInfo();
+  // console.log(geometry);
+  $http.get('app/assets/files/test_files/weather_test.json')
+  .success(function(data){
+    $scope.weather = data.weather;
+  });
+
+
+  $scope.initMap = function() {
+    $http.get('app/assets/files/test_files/geocode_test.json')
+    .success(function(data){
+      $scope.geocodeInfo = data.geoLocation.results[0].geometry.location;
+      var lat = $scope.geocodeInfo.lat;
+      var lng = $scope.geocodeInfo.lng;
+
+      var mapDiv = document.getElementById('map');
+      var map = new google.maps.Map(mapDiv, {
+        center: {lat: lat, lng: lng},
+        zoom: 8
+      });
+    });
+
+  }
+
 }]);
