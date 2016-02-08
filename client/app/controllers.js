@@ -92,7 +92,7 @@ var callApis = function(){
         });
     }).then(function(){
       Alchemy.save(travelInfo).$promise.then(function(news){
-        if (news.articles.result) {
+        if (news.articles.result.docs) {
          $scope.alchemy = news.articles.result.docs;
          newsService.addNewsInfo($scope.alchemy);
        } else {
