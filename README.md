@@ -29,13 +29,13 @@ Heroku Link [Mezzo](https://mezzo-travel.herokuapp.com/)
 Angular, Node.js, Express, Angular-Material, Javascript.
 
 ####API's Used
-Expedia Things To Do
-IBM Alchemy
-Instagram
-Google Places
-Google Maps
-Wikipedia
-Open Weather
+Expedia Things To Do  
+IBM Alchemy  
+Instagram  
+Google Places  
+Google Maps  
+Wikipedia  
+Open Weather  
 
 ----
 ###How to install
