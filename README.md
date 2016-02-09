@@ -13,20 +13,29 @@ Heroku Link [Mezzo](https://mezzo-travel.herokuapp.com/)
 
 ###App Features
 * Takes your travel destination and dates to return personalized travel information.
-* Creates an events pages using Expedias Things to do api, and the input city. With detailed descriptions.
-* Gathers photos using Instagrams api. Based on tag being the input city with no spaces. <small>(No filtering for NSFW cotnent)</small>.
-* Uses IBM Alchemy api to find news articles about the input city, and displays links to read the full article.
-* Generates A list of restaurants in the input city, filtered by rating, and a 50,000 meter radius.
-* Generates A list of hotels in the input city, filtered by rating, and a 50,000 meter radius.
+* Creates an events pages using Expedias Things to do API, and the input city. With detailed descriptions.
+* Gathers photos using Instagrams API. Based on tag being the input city with no spaces. <small>(No filtering for NSFW cotnent)</small>.
+* Uses IBM Alchemy API to find news articles about the input city, and displays links to read the full article.
+* Calling Google Places, generates A list of restaurants in the input city, filtered by rating, and a 50,000 meter radius.
+* Calling Google Places, generates A list of hotels in the input city, filtered by rating, and a 50,000 meter radius.
 * Using the Wikipedia api, generates an information page about the input city.
-* Gathers current weather information with Open Weathers api. Uses the input city and country as parameters.
+* Gathers current weather information with Open Weathers API. Uses the input city and country as parameters.
+* Creates an interactive city map using Googles Map API.
 * If no data is put into travel information form. It will default to Tokyo Japan.
-* Country list preloaded to make it easier to find countries, and stops spelling discrepancies.
 
 ----
 
 ###Technology Used
 Angular, Node.js, Express, Angular-Material, Javascript.
+
+####API's Used
+Expedia Things To Do
+IBM Alchemy
+Instagram
+Google Places
+Google Maps
+Wikipedia
+Open Weather
 
 ----
 ###How to install
